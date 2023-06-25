@@ -15,6 +15,25 @@ public class BuildingSystem : MonoBehaviour
 
     #region Build Method
 
+    public bool CanBePlaced(){
+        Vector3Int positionInt = GridBuildingSystem.Instance.GridLayout.LocalToCell(transform.position);
+        BoundsInt areaTemp = area;
+        areaTemp.position = positionInt;
+
+        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp)){
+            return true;
+        }
+
+        return false;
+    }
+
+    public void Place(){
+        Vector3Int positionInt = GridBuildingSystem.Instance.GridLayout.LocalToCell(transform.position);
+        BoundsInt areaTemp = area;
+        areaTemp.position = positionInt;
+        Placed = true;
+        GridBuildingSystem.Instance.TakeArea(areaTemp);
+    }
 
     #endregion
 

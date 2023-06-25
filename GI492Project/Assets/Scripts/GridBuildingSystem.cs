@@ -12,6 +12,8 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField] private Tilemap mainTilemap;
     [SerializeField] private Tilemap tempTilemap;
 
+    public GridLayout GridLayout => gridLayout;
+
     //Private Variable
     private static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
     private BuildingSystem temp;
@@ -55,6 +57,16 @@ public class GridBuildingSystem : MonoBehaviour
                 }
             }
         }
+
+        else if (Input.GetKeyDown(KeyCode.Space)){
+            if (temp.CanBePlaced()){
+                temp.Place();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape)) {
+            ClearArea();
+            Destroy(temp.gameObject);
+        }
     }
 
     #endregion
@@ -91,7 +103,7 @@ public class GridBuildingSystem : MonoBehaviour
     #region Building Placement
 
     public void InitializeWithBuilding(GameObject building){
-        temp = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<BuildingSystem>();
+        temp = Instantiate(building, new Vector3(0f, -0.3f, 0f), Quaternion.identity).GetComponent<BuildingSystem>();
         FollowBuilding();
     }
 
@@ -124,6 +136,22 @@ public class GridBuildingSystem : MonoBehaviour
 
         tempTilemap.SetTilesBlock(buildingArea, tileArray);
         prevArea = buildingArea;
+    }
+
+    public bool CanTakeArea(BoundsInt area){
+        TileBase[] baseArray = GetTilesBlock(area, mainTilemap);
+        foreach (var b in baseArray){
+            if (b != tileBases[TileType.White]){
+                Debug.Log("Cannot place here!");
+                return false;
+            } 
+        }
+        return true;
+    }
+
+    public void TakeArea(BoundsInt area){
+        SetTilesBlock(area, TileType.Empty, tempTilemap);
+        SetTilesBlock(area, TileType.Green, mainTilemap);
     }
 
     #endregion
