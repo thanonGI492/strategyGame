@@ -9,10 +9,6 @@ public class BuildingSystem : MonoBehaviour
     [Header("Setting")]
     public BoundsInt area;
 
-    private void Start(){
-
-    }
-
     #region Build Method
 
     public bool CanBePlaced(){
