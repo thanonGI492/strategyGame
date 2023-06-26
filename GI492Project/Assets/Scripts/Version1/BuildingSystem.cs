@@ -20,6 +20,9 @@ public class BuildingSystem : MonoBehaviour
     }
 
     private void OnMouseDrag(){
+
+        if (Placed) return;
+
         Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + _offSet;
         Vector3Int cellPos = GridBuildingSystem.Instance.GridLayout.LocalToCell(touchPos);
         
