@@ -13,6 +13,7 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField] private Tilemap tempTilemap;
 
     public GridLayout GridLayout => gridLayout;
+    public BuildingSystem Temp => temp;
 
     //Private Variable
     private static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
@@ -40,26 +41,27 @@ public class GridBuildingSystem : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButtonDown(0)){
-            if(EventSystem.current.IsPointerOverGameObject(0)){
-                return;
-            }
+        // if (Input.GetMouseButtonDown(0)){
+        //     if(EventSystem.current.IsPointerOverGameObject(0)){
+        //         return;
+        //     }
 
-            if (!temp.Placed){
-                Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector3Int cellPos = gridLayout.LocalToCell(touchPos);
+        //     if (temp.Placed){
+        //         return;
+        //     }
+        //     Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //     Vector3Int cellPos = gridLayout.LocalToCell(touchPos);
 
-                if (prevPos != cellPos){
-                    temp.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos +
-                    new Vector3(0.5f, 0.5f, 0f));
+        //     if (prevPos != cellPos){
+        //         temp.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos +
+        //         new Vector3(0.5f, 0.5f, 0f));
 
-                    prevPos = cellPos;
-                    FollowBuilding();
-                }
-            }
-        }
+        //         prevPos = cellPos;
+        //         FollowBuilding();
+        //     }
+        // }
 
-        else if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space)){
             if (temp.CanBePlaced()){
                 temp.Place();
             }
@@ -104,7 +106,7 @@ public class GridBuildingSystem : MonoBehaviour
     #region Building Placement
 
     public void InitializeWithBuilding(GameObject building){
-        temp = Instantiate(building, new Vector3(0f, -0.3f, 0f), Quaternion.identity).GetComponent<BuildingSystem>();
+        temp = Instantiate(building, new Vector3(0f, 0.3f, 0f), Quaternion.identity).GetComponent<BuildingSystem>();
         FollowBuilding();
     }
 
@@ -114,7 +116,7 @@ public class GridBuildingSystem : MonoBehaviour
         tempTilemap.SetTilesBlock(prevArea, toClear);
     }
     
-    private void FollowBuilding(){
+    public void FollowBuilding(){
         ClearArea();
 
         temp.area.position = gridLayout.WorldToCell(temp.gameObject.transform.position);

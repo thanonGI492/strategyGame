@@ -9,6 +9,31 @@ public class BuildingSystem : MonoBehaviour
     [Header("Setting")]
     public BoundsInt area;
 
+    //private Variable
+    private Vector3 _offSet;
+    private Vector3 _prevPos;
+
+    #region Unity Method
+
+    private void OnMouseDown(){
+        _offSet = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    private void OnMouseDrag(){
+        Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + _offSet;
+        Vector3Int cellPos = GridBuildingSystem.Instance.GridLayout.LocalToCell(touchPos);
+        
+        if (_prevPos != cellPos){
+                GridBuildingSystem.Instance.Temp.transform.localPosition = GridBuildingSystem.Instance.GridLayout.CellToLocalInterpolated(cellPos +
+                new Vector3(0.5f, 0.5f, 0f));
+
+                _prevPos = cellPos;
+                GridBuildingSystem.Instance.FollowBuilding();
+            }
+    }
+
+    #endregion
+
     #region Build Method
 
     public bool CanBePlaced(){
