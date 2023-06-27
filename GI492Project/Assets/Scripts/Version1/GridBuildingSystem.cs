@@ -60,13 +60,7 @@ public class GridBuildingSystem : MonoBehaviour
         //         FollowBuilding();
         //     }
         // }
-
-        if (Input.GetKeyDown(KeyCode.Space)){
-            if (temp.CanBePlaced()){
-                temp.Place();
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
             ClearArea();
             Destroy(temp.gameObject);
         }
@@ -75,7 +69,7 @@ public class GridBuildingSystem : MonoBehaviour
     #endregion
 
     #region Tiles MapManagement
-    
+
     private static TileBase[] GetTilesBlock(BoundsInt area, Tilemap tilemap){
         TileBase[] array = new TileBase[area.size.x * area.size.y * area.size.z];
         int counter = 0;
@@ -108,6 +102,7 @@ public class GridBuildingSystem : MonoBehaviour
     public void InitializeWithBuilding(GameObject building){
         temp = Instantiate(building, new Vector3(0f, 0.3f, 0f), Quaternion.identity).GetComponent<BuildingSystem>();
         FollowBuilding();
+
     }
 
     private void ClearArea(){

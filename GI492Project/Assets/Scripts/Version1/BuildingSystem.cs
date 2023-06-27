@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BuildingSystem : MonoBehaviour
 {
+    public static BuildingSystem Instance;
+
     public bool Placed {get; private set;}
 
     [Header("Setting")]
@@ -14,6 +16,11 @@ public class BuildingSystem : MonoBehaviour
     private Vector3 _prevPos;
 
     #region Unity Method
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void OnMouseDown(){
         _offSet = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -33,6 +40,14 @@ public class BuildingSystem : MonoBehaviour
                 _prevPos = cellPos;
                 GridBuildingSystem.Instance.FollowBuilding();
             }
+    }
+
+    private void OnMouseUp()
+    {
+        if (GridBuildingSystem.Instance.Temp.CanBePlaced())
+        {
+            GridBuildingSystem.Instance.Temp.Place();
+        }
     }
 
     #endregion
