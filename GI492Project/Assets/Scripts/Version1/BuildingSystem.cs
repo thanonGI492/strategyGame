@@ -44,6 +44,8 @@ public class BuildingSystem : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (Placed) return;
+
         if (GridBuildingSystem.Instance.Temp.CanBePlaced())
         {
             GridBuildingSystem.Instance.Temp.Place();
