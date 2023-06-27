@@ -14,6 +14,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     public GridLayout GridLayout => gridLayout;
     public BuildingSystem Temp => temp;
+    public bool IsSpawningObj;
 
     //Private Variable
     private static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
@@ -37,7 +38,8 @@ public class GridBuildingSystem : MonoBehaviour
     }
 
     private void Update(){
-        if (!temp){
+        if (!temp)
+        {
             return;
         }
 
@@ -100,9 +102,13 @@ public class GridBuildingSystem : MonoBehaviour
     #region Building Placement
 
     public void InitializeWithBuilding(GameObject building){
+        if (IsSpawningObj)
+        {
+            return;
+        }
         temp = Instantiate(building, new Vector3(0f, 0.3f, 0f), Quaternion.identity).GetComponent<BuildingSystem>();
         FollowBuilding();
-
+        IsSpawningObj = true;
     }
 
     private void ClearArea(){
