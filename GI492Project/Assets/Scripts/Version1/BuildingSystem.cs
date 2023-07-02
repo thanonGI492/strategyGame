@@ -62,7 +62,7 @@ public class BuildingSystem : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
 
-        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp)){
+        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp, gameObject)){
             return true;
         }
 

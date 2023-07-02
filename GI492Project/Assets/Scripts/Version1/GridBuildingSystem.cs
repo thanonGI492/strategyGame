@@ -35,6 +35,7 @@ public class GridBuildingSystem : MonoBehaviour
         tileBases.Add(TileType.White, Resources.Load<TileBase>(version + tilePath + "white"));
         tileBases.Add(TileType.Red, Resources.Load<TileBase>(version + tilePath + "red"));
         tileBases.Add(TileType.Green, Resources.Load<TileBase>(version + tilePath + "green"));
+        tileBases.Add(TileType.Blue, Resources.Load<TileBase>(version + tilePath + "blue"));
     }
 
     private void Update(){
@@ -42,26 +43,6 @@ public class GridBuildingSystem : MonoBehaviour
         {
             return;
         }
-
-        // if (Input.GetMouseButtonDown(0)){
-        //     if(EventSystem.current.IsPointerOverGameObject(0)){
-        //         return;
-        //     }
-
-        //     if (temp.Placed){
-        //         return;
-        //     }
-        //     Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //     Vector3Int cellPos = gridLayout.LocalToCell(touchPos);
-
-        //     if (prevPos != cellPos){
-        //         temp.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos +
-        //         new Vector3(0.5f, 0.5f, 0f));
-
-        //         prevPos = cellPos;
-        //         FollowBuilding();
-        //     }
-        // }
         if (Input.GetKeyDown(KeyCode.Escape)) {
             ClearArea();
             Destroy(temp.gameObject);
@@ -142,20 +123,38 @@ public class GridBuildingSystem : MonoBehaviour
         prevArea = buildingArea;
     }
 
-    public bool CanTakeArea(BoundsInt area){
+    public bool CanTakeArea(BoundsInt area, GameObject gameObject){
         TileBase[] baseArray = GetTilesBlock(area, mainTilemap);
         foreach (var b in baseArray){
-            if (b != tileBases[TileType.White]){
-                Debug.Log("Cannot place here!");
-                return false;
+            if (b == tileBases[TileType.White] && gameObject.CompareTag("OnWhite")){
+                return true;
             } 
+            else if (b == tileBases[TileType.Green] && gameObject.CompareTag("OnGreen")){
+                return true;
+            }
+            else if (b == tileBases[TileType.Blue] && gameObject.CompareTag("OnBlue"))
+            {
+                return true;
+            }
         }
-        return true;
+        Debug.Log("Can't place here! Place on: " + gameObject.tag + " tile");
+        return false;
     }
 
     public void TakeArea(BoundsInt area){
         SetTilesBlock(area, TileType.Empty, tempTilemap);
-        SetTilesBlock(area, TileType.Green, mainTilemap);
+        if (gameObject.CompareTag("OnWhite"))
+        {
+            SetTilesBlock(area, TileType.Empty, mainTilemap);
+        }
+        else if (gameObject.CompareTag("OnGreen"))
+        {
+            SetTilesBlock(area, TileType.Empty, mainTilemap);
+        }
+        else if (gameObject.CompareTag("OnBlue"))
+        {
+            SetTilesBlock(area, TileType.Empty, mainTilemap);
+        }
     }
 
     #endregion
@@ -166,5 +165,6 @@ public enum TileType{
     Empty,
     White,
     Green,
-    Red
+    Red,
+    Blue
 }
