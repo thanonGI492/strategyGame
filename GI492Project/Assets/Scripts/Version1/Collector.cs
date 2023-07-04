@@ -6,15 +6,18 @@ using UnityEngine;
 public class Collector : MonoBehaviour
 {
     public int CurRegen = 0;
+    public float isTime = 1f;
+    public int Pumper = 0;
     private float timer = 0f;
+    private float isTimer = 0f;
   
     private void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 1f)
+        if (timer >= isTime)
         {
-            CurRegen += 1;
-            timer = 0f;
+            CurRegen += Pumper;
+            timer = isTimer;
             Debug.Log("Drain resource: " + CurRegen);
         }
     }
