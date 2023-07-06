@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 456611246312595613}
   - component: {fileID: -407198575970607597}
   - component: {fileID: 1871278044269831894}
+  - component: {fileID: -548584140692476580}
   m_Layer: 0
   m_Name: Waterpump
   m_TagString: OnBlue
@@ -59,6 +60,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -75,6 +95,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.14, y: 2.36}
   m_EdgeRadius: 0
+--- !u!114 &-548584140692476580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464363199973811286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d00bfb9d2dd1042af689f1e6784b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurRegen: 0
+  isTime: 1
+  Pumper: 3
 --- !u!1 &7460262210244628743
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +188,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
