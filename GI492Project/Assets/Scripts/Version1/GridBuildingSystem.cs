@@ -87,9 +87,10 @@ public class GridBuildingSystem : MonoBehaviour
         {
             return;
         }
+
         temp = Instantiate(building, new Vector3(0f, 0.3f, 0f), Quaternion.identity).GetComponent<BuildingSystem>();
         FollowBuilding();
-        IsSpawningObj = true;
+
     }
 
     private void ClearArea(){
