@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f40a2ecb1e8ef44da92a491fe36a387, type: 3}
-  m_Name: SawMill
+  m_Name: StoneMine
   m_EditorClassIdentifier: 
-  NameBuilding: SawMill
+  NameBuilding: StoneMine
   CostWood: 10
   CostStone: 5
   CostCopper: 0

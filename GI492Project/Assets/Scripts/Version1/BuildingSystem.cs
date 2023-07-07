@@ -10,6 +10,7 @@ public class BuildingSystem : MonoBehaviour
 
     [Header("Setting")]
     public BoundsInt area;
+    public BoundsInt areaCheck;
 
     //private Variable
     private Vector3 _offSet;
@@ -70,7 +71,7 @@ public class BuildingSystem : MonoBehaviour
 
     public void Place(){
         Vector3Int positionInt = GridBuildingSystem.Instance.GridLayout.LocalToCell(transform.position);
-        BoundsInt areaTemp = area;
+        BoundsInt areaTemp = areaCheck;
         areaTemp.position = positionInt;
         Placed = true;
         GridBuildingSystem.Instance.TakeArea(areaTemp);

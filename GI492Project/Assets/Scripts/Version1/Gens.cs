@@ -11,12 +11,12 @@ public class Gens : MonoBehaviour
     //private variable
     private int _baseLv = 1;
     //public variable
-    public CostBuilding _costBuilding;
+    public CostBuilding costSawMill;
 
     #region Unity Method
     private void OnMouseUp()
     {
-        if (gameObject.name.Contains(_costBuilding.nameBuilding))
+        if (gameObject.name.Contains(costSawMill.NameBuilding))
         {
             StartCoroutine(woodGen());
         }

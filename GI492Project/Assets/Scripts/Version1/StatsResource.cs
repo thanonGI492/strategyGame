@@ -16,7 +16,8 @@ public class StatsResource : MonoBehaviour
     [HideInInspector] public static int TotalEnergy;
     [HideInInspector] public static int TotalWood;
     [HideInInspector] public static int TotalStone;
-    public CostBuilding _costBuilding;
+    public CostBuilding CostSawMill;
+    public CostBuilding CostStoneMine;
 
     #region Unity Method
     private void Awake()
@@ -69,14 +70,29 @@ public class StatsResource : MonoBehaviour
 
     public void SpawnSawMill() 
     { 
-        if (TotalWood < _costBuilding.costWood || TotalStone < _costBuilding.costStone || TotalEnergy < _costBuilding.costEnergy)
+        if (TotalWood < CostSawMill.CostWood || TotalStone < CostSawMill.CostStone || TotalEnergy < CostSawMill.CostEnergy)
         {
             Debug.Log("Insufficient Resource");
+            GridBuildingSystem.Instance.IsSpawningObj = true;
             return;
         }
-        TotalEnergy -= _costBuilding.costEnergy;
-        TotalWood -= _costBuilding.costWood;
-        TotalStone -= _costBuilding.costStone;
+        TotalEnergy -= CostSawMill.CostEnergy;
+        TotalWood -= CostSawMill.CostWood;
+        TotalStone -= CostSawMill.CostStone;
+        GridBuildingSystem.Instance.IsSpawningObj = false;
+    }
+
+    public void SpawnStoneMine()
+    {
+        if (TotalWood < CostStoneMine.CostWood || TotalStone < CostStoneMine.CostStone || TotalEnergy < CostStoneMine.CostEnergy)
+        {
+            Debug.Log("Insufficient Resource");
+            GridBuildingSystem.Instance.IsSpawningObj = true;
+            return;
+        }
+        TotalEnergy -= CostStoneMine.CostEnergy;
+        TotalWood -= CostStoneMine.CostWood;
+        TotalStone -= CostStoneMine.CostStone;
         GridBuildingSystem.Instance.IsSpawningObj = false;
     }
 

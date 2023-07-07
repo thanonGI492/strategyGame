@@ -11,10 +11,11 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField] private GridLayout gridLayout;
     [SerializeField] private Tilemap mainTilemap;
     [SerializeField] private Tilemap tempTilemap;
+    [SerializeField] private Tilemap checkTilemap;
 
     public GridLayout GridLayout => gridLayout;
     public BuildingSystem Temp => temp;
-    public bool IsSpawningObj;
+    [HideInInspector] public bool IsSpawningObj;
 
     //Private Variable
     private static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
@@ -36,6 +37,7 @@ public class GridBuildingSystem : MonoBehaviour
         tileBases.Add(TileType.Red, Resources.Load<TileBase>(version + tilePath + "red"));
         tileBases.Add(TileType.Green, Resources.Load<TileBase>(version + tilePath + "green"));
         tileBases.Add(TileType.Blue, Resources.Load<TileBase>(version + tilePath + "blue"));
+        tileBases.Add(TileType.Grey, Resources.Load<TileBase>(version + tilePath + "grey"));
     }
 
     private void Update(){
@@ -146,15 +148,15 @@ public class GridBuildingSystem : MonoBehaviour
         SetTilesBlock(area, TileType.Empty, tempTilemap);
         if (gameObject.CompareTag("OnWhite"))
         {
-            SetTilesBlock(area, TileType.Empty, mainTilemap);
+            SetTilesBlock(area, TileType.Grey, mainTilemap);
         }
         else if (gameObject.CompareTag("OnGreen"))
         {
-            SetTilesBlock(area, TileType.Empty, mainTilemap);
+            SetTilesBlock(area, TileType.Grey, mainTilemap);
         }
         else if (gameObject.CompareTag("OnBlue"))
         {
-            SetTilesBlock(area, TileType.Empty, mainTilemap);
+            SetTilesBlock(area, TileType.Grey, mainTilemap);
         }
     }
 
@@ -167,5 +169,6 @@ public enum TileType{
     White,
     Green,
     Red,
-    Blue
+    Blue,
+    Grey
 }
