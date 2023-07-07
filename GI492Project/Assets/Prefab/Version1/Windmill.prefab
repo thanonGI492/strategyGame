@@ -107,6 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d00bfb9d2dd1042af689f1e6784b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energypoint: {fileID: 0}
+  energyUI: {fileID: 0}
+  sceneName: Win
   CurRegen: 0
   isTime: 1
   Pumper: 2

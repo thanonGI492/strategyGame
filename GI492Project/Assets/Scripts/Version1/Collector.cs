@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Collector : MonoBehaviour
 {
     public GameObject energypoint;
     public Text energyUI;
+    public string sceneName;
     public int CurRegen ;
     public float isTime = 1f;
     public int Pumper = 0;
@@ -24,9 +26,6 @@ public class Collector : MonoBehaviour
    
     private void Update()
     {
-
-        
-        
         timer += Time.deltaTime;
         if (timer >= isTime)
         {
@@ -34,8 +33,13 @@ public class Collector : MonoBehaviour
             timer = isTimer;
             Debug.Log("Drain resource: " + CurRegen);
             energyUI.text = CurRegen.ToString();
-            //if(CurRegen)
+            if(CurRegen >= 20)
+            {
+            SceneManager.LoadScene(sceneName);
+            }
+        
         }
+
         
     }
 }
