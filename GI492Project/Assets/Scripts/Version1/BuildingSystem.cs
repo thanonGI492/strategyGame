@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BuildingSystem : MonoBehaviour
 {
+    private Collector script;
+    
     public static BuildingSystem Instance;
-
+    
     public bool Placed {get; private set;}
 
     [Header("Setting")]
@@ -20,6 +22,8 @@ public class BuildingSystem : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        script = GetComponent<Collector>();
+        script.enabled = false;
     }
 
     private void OnMouseDown(){
@@ -74,6 +78,7 @@ public class BuildingSystem : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
         Placed = true;
+        script.enabled = true;
         GridBuildingSystem.Instance.TakeArea(areaTemp);
     }
 

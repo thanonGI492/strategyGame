@@ -166,5 +166,5 @@ public enum TileType{
     White,
     Green,
     Red,
-    Blue
+    Blue,
 }
