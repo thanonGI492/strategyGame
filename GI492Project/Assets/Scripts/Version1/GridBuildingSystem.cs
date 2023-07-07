@@ -11,7 +11,6 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField] private GridLayout gridLayout;
     [SerializeField] private Tilemap mainTilemap;
     [SerializeField] private Tilemap tempTilemap;
-    [SerializeField] private Tilemap checkTilemap;
 
     public GridLayout GridLayout => gridLayout;
     public BuildingSystem Temp => temp;
@@ -146,18 +145,6 @@ public class GridBuildingSystem : MonoBehaviour
 
     public void TakeArea(BoundsInt area){
         SetTilesBlock(area, TileType.Empty, tempTilemap);
-        if (gameObject.CompareTag("OnWhite"))
-        {
-            SetTilesBlock(area, TileType.Grey, mainTilemap);
-        }
-        else if (gameObject.CompareTag("OnGreen"))
-        {
-            SetTilesBlock(area, TileType.Grey, mainTilemap);
-        }
-        else if (gameObject.CompareTag("OnBlue"))
-        {
-            SetTilesBlock(area, TileType.Grey, mainTilemap);
-        }
     }
 
     #endregion

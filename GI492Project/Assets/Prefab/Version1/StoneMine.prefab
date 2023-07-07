@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8799794189631775858}
   - component: {fileID: 9071247460244288403}
   m_Layer: 0
-  m_Name: StoneMine
+  m_Name: Stonemine
   m_TagString: OnBlue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlStatGens: 2
   spawnTime: 1
-  costSawMill: {fileID: 11400000, guid: d817359a5ba74574abf6d08c5889cf56, type: 2}
+  energyDrain: 2
+  Building: {fileID: 11400000, guid: d817359a5ba74574abf6d08c5889cf56, type: 2}
 --- !u!1 &7460262210244628743
 GameObject:
   m_ObjectHideFlags: 0

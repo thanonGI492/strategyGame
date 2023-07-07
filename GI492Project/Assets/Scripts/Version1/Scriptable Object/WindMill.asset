@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f40a2ecb1e8ef44da92a491fe36a387, type: 3}
-  m_Name: StoneMine
+  m_Name: WindMill
   m_EditorClassIdentifier: 
-  NameBuilding: Stonemine
-  CostWood: 10
+  NameBuilding: Windmill
+  CostWood: 5
   CostStone: 5
   CostCopper: 0
   CostIron: 0
   CostGold: 0
-  CostEnergy: 2
+  CostEnergy: 0
