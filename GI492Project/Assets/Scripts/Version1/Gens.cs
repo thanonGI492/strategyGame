@@ -6,26 +6,40 @@ public class Gens : MonoBehaviour
 {
 
     [SerializeField] private float controlStatGens;
-    [SerializeField] private string nameGen;
+    [SerializeField] private int spawnTime;
 
     //private variable
     private int _baseLv = 1;
+    //public variable
+    public CostBuilding _costBuilding;
 
     #region Unity Method
     private void OnMouseUp()
     {
-        if (gameObject.name.Contains(nameGen))
+        if (gameObject.name.Contains(_costBuilding.nameBuilding))
         {
-            StartCoroutine(energyGen());
+            StartCoroutine(woodGen());
         }
+        else if (gameObject.name.Contains("StoneMine"))
+        {
+            StartCoroutine(stoneGen());
+        }
+
         GridBuildingSystem.Instance.IsSpawningObj = true;
     }
 
-    IEnumerator energyGen()
+    IEnumerator woodGen()
     {
-        yield return new WaitForSeconds(5);
-        StatsResource.TotalEnergy += (int)(_baseLv * controlStatGens);
-        StartCoroutine(energyGen());
+        yield return new WaitForSeconds(spawnTime);
+        StatsResource.TotalWood += (int)(_baseLv * controlStatGens);
+        StartCoroutine(woodGen());
+    }
+
+    IEnumerator stoneGen()
+    {
+        yield return new WaitForSeconds(spawnTime);
+        StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
+        StartCoroutine(stoneGen());
     }
     #endregion
 }
