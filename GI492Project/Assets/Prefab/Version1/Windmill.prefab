@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7870873669150989174}
   m_Layer: 0
   m_Name: Windmill
-  m_TagString: OnGreen
+  m_TagString: OnHill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,6 +110,7 @@ MonoBehaviour:
   controlStatGens: 1
   spawnTime: 1
   energyDrain: 0
+  drainTime: 2
   Building: {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
 --- !u!1 &7460262210244628743
 GameObject:

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8799794189631775858}
   - component: {fileID: 9071247460244288403}
   m_Layer: 0
-  m_Name: Stonemine
-  m_TagString: OnStone
+  m_Name: Goldmine
+  m_TagString: OnGold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area:
     m_Position: {x: 0, y: 0, z: 0}
-    m_Size: {x: 2, y: 2, z: 1}
+    m_Size: {x: 1, y: 1, z: 1}
 --- !u!65 &8799794189631775858
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -69,8 +69,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.89446574, y: 0.69711125, z: 1}
-  m_Center: {x: 0.00791505, y: 0.07692069, z: 0}
+  m_Size: {x: 0.89446574, y: 0.6999587, z: 1}
+  m_Center: {x: 0.00791505, y: 0.07216096, z: 0}
 --- !u!114 &9071247460244288403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,11 +83,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41a9100ed6ae9b44a3d5fb6b690b1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlStatGens: 1
+  controlStatGens: 3
   spawnTime: 2
   energyDrain: 2
   drainTime: 2
-  Building: {fileID: 11400000, guid: d817359a5ba74574abf6d08c5889cf56, type: 2}
+  Building: {fileID: 11400000, guid: 07fa3ac5d216f3b4883da1045dc1ec2b, type: 2}
 --- !u!1 &7460262210244628743
 GameObject:
   m_ObjectHideFlags: 0
