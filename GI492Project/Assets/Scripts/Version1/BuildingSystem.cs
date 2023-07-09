@@ -53,7 +53,6 @@ public class BuildingSystem : MonoBehaviour
         if (GridBuildingSystem.Instance.Temp.CanBePlaced())
         {
             GridBuildingSystem.Instance.Temp.Place();
-            GridBuildingSystem.Instance.IsSpawningObj = false;
         }
     }
 
