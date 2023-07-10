@@ -180,14 +180,10 @@ public enum TileType{
     Dirt,
     Forest,
     Red,
-<<<<<<< HEAD
-    Blue,
-=======
     Water,
     Copper,
     Iron,
     Gold,
     Hill,
     Stone
->>>>>>> Work_Safe
 }
