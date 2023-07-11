@@ -48,9 +48,14 @@ public class GridBuildingSystem : MonoBehaviour
         {
             return;
         }
-        if (Input.GetMouseButtonDown(1)) {
-            ClearArea();
-            Destroy(temp.gameObject);
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (!BuildingSystem.Instance.Placed)
+            {
+                ClearArea();
+                Destroy(temp.gameObject);
+            }
+            
         }
     }
 

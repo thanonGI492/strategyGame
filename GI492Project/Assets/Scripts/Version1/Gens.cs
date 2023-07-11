@@ -9,6 +9,10 @@ public class Gens : MonoBehaviour
     [SerializeField] private int spawnTime;
     [SerializeField] private int energyDrain;
     [SerializeField] private int drainTime;
+    [SerializeField] private int BlackOut;
+    [SerializeField] private int CapBlackOut = -10;
+    [SerializeField] private int Gendown = 0;
+    
 
     //private variable
     private int _baseLv = 1;
@@ -59,7 +63,15 @@ public class Gens : MonoBehaviour
     IEnumerator EnergyDrain()
     {
         yield return new WaitForSeconds(drainTime);
-        StatsResource.TotalEnergy -= energyDrain;
+        if (StatsResource.TotalEnergy >= CapBlackOut)
+        {
+            StatsResource.TotalEnergy -= energyDrain;
+        }
+        else
+        {
+            StatsResource.TotalEnergy = CapBlackOut;
+        }
+        
         StartCoroutine(EnergyDrain());
     }
 
@@ -73,13 +85,21 @@ public class Gens : MonoBehaviour
     IEnumerator woodGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        StatsResource.TotalWood += (int)(_baseLv * controlStatGens);
+        if (StatsResource.TotalEnergy >= BlackOut)
+        {
+             StatsResource.TotalWood += (int)(_baseLv * controlStatGens);
+        }
         StartCoroutine(woodGen());
+        
     }
 
     IEnumerator stoneGen()
     {
         yield return new WaitForSeconds(spawnTime);
+        if (StatsResource.TotalEnergy >= BlackOut)
+        {
+            StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
+        }
         StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
         StartCoroutine(stoneGen());
     }
@@ -87,21 +107,31 @@ public class Gens : MonoBehaviour
     IEnumerator copperGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        StatsResource.TotalCopper += (int)(_baseLv * controlStatGens);
+        if (StatsResource.TotalEnergy >= BlackOut)
+        {
+            StatsResource.TotalCopper += (int)(_baseLv * controlStatGens);
+        }
         StartCoroutine(copperGen());
     }
 
     IEnumerator ironGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        StatsResource.TotalIron += (int)(_baseLv * controlStatGens);
+        if (StatsResource.TotalEnergy >= BlackOut)
+        {
+            StatsResource.TotalIron += (int)(_baseLv * controlStatGens);
+        }
+       
         StartCoroutine(ironGen());
     }
 
     IEnumerator goldGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        StatsResource.TotalGold += (int)(_baseLv * controlStatGens);
+        if (StatsResource.TotalEnergy >= BlackOut)
+        {
+            StatsResource.TotalGold += (int)(_baseLv * controlStatGens);
+        }
         StartCoroutine(goldGen());
     }
     #endregion
