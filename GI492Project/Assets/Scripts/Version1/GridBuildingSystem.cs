@@ -48,7 +48,7 @@ public class GridBuildingSystem : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetMouseButtonDown(1)) {
             ClearArea();
             Destroy(temp.gameObject);
         }
@@ -98,7 +98,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     }
 
-    private void ClearArea(){
+    public void ClearArea(){
         TileBase[] toClear = new TileBase[prevArea.size.x * prevArea.size.y * prevArea.size.z];
         FillTiles(toClear, TileType.Empty);
         tempTilemap.SetTilesBlock(prevArea, toClear);

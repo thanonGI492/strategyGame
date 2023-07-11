@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildingSystem : MonoBehaviour
 {
     public static BuildingSystem Instance;
+    
 
     public bool Placed {get; private set;}
 
