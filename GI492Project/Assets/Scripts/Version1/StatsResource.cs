@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class StatsResource : MonoBehaviour
 {
@@ -23,15 +22,6 @@ public class StatsResource : MonoBehaviour
     [HideInInspector] public static int TotalCopper;
     [HideInInspector] public static int TotalIron;
     [HideInInspector] public static int TotalGold;
-
-   // public GameObject check1;
-   // public GameObject check2;
-   // public GameObject check3;
-
-   // public Button complete1;
-   // public Button complete2;
-
-  //  public string sceneName;
 
 
     #region Unity Method
@@ -76,43 +66,6 @@ public class StatsResource : MonoBehaviour
         TotalGold -= cost.CostGold;
         GridBuildingSystem.Instance.IsSpawningObj = false;
     }
-
-    //public void Tier1()
-   // { 
-       
-      //  if(TotalCopper >= 30)
-        //{
-         
-          //TotalCopper -= 30;
-        //  check1.SetActive(true);
-         // complete1.enabled = false;
-       // }
-   // }
-
-    //public void Tier2()
-   // {
-        
-       // if(TotalIron >= 30)
-      //  {
-          
-        //  TotalIron -= 30;  
-       //   check2.SetActive(true);
-        //  complete2.enabled = false;
-      //  }
-    //}
-
-   // public void Tier3()
-    //{
-        
-      //  if(TotalGold >= 30)
-       //{
-          
-         // TotalGold -= 30;
-         // check3.SetActive(true);
-        //  SceneManager.LoadScene(sceneName);
-       // }
-
-   // }
 
     #endregion
 }

@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 456611246312595613}
   - component: {fileID: -407198575970607597}
-  - component: {fileID: -7870873669150989174}
-  - component: {fileID: 323113668867839416}
+  - component: {fileID: 8386240393412876935}
+  - component: {fileID: -7638211277661079040}
   m_Layer: 0
-  m_Name: Windmill
-  m_TagString: OnHill
+  m_Name: SawMill
+  m_TagString: OnDirt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,25 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area:
     m_Position: {x: 0, y: 0, z: 0}
-    m_Size: {x: 1, y: 1, z: 1}
---- !u!114 &-7870873669150989174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464363199973811286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c41a9100ed6ae9b44a3d5fb6b690b1c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlStatGens: 1
-  spawnTime: 1
-  energyDrain: 0
-  drainTime: 2
-  Building: {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
---- !u!65 &323113668867839416
+    m_Size: {x: 1, y: 2, z: 1}
+--- !u!65 &8386240393412876935
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,6 +71,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7638211277661079040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464363199973811286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c41a9100ed6ae9b44a3d5fb6b690b1c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlStatGens: 1
+  spawnTime: 2
+  energyDrain: 2
+  drainTime: 2
+  Building: {fileID: 11400000, guid: 9c31f00be48023a4d9407a59991a1f6f, type: 2}
 --- !u!1 &7460262210244628743
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,14 +112,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7460262210244628743}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.075, z: 0}
-  m_LocalScale: {x: 0.43785277, y: 0.43785277, z: 0.43785277}
+  m_LocalRotation: {x: -0.024356633, y: 0.26665694, z: -0.08764046, w: 0.95948946}
+  m_LocalPosition: {x: -0.157, y: 0.201, z: 0.144}
+  m_LocalScale: {x: 0.9631129, y: 0.41602504, z: 0.47842556}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 456611246312595613}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 31.063, z: -10.438}
 --- !u!212 &299007965460090179
 SpriteRenderer:
   m_ObjectHideFlags: 0
