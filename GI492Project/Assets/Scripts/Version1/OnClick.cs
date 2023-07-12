@@ -11,7 +11,7 @@ public class OnClick : MonoBehaviour
     public GameObject _destroyBotton;
     private GameObject _ourGameObj;
     public float _waitTime;
-    public Gens isGens;
+    
     
     
     
