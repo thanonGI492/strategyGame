@@ -62,10 +62,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41a9100ed6ae9b44a3d5fb6b690b1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlStatGens: 1
+  controlStatGens: 2
   spawnTime: 1
   energyDrain: 0
   drainTime: 2
+  BlackOut: 0
+  CapBlackOut: -10
+  Gendown: 0
   Building: {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
 --- !u!65 &323113668867839416
 BoxCollider:

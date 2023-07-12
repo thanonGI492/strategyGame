@@ -100,7 +100,7 @@ public class Gens : MonoBehaviour
         {
             StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
         }
-        StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
+        
         StartCoroutine(stoneGen());
     }
 
