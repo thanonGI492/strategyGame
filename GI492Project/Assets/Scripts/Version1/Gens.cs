@@ -24,6 +24,7 @@ public class Gens : MonoBehaviour
     #region Unity Method
     private void OnMouseUp()
     {
+        
         if (_placed)
         {
             return;

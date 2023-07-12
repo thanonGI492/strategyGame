@@ -52,11 +52,14 @@ public class GridBuildingSystem : MonoBehaviour
         {
             if (!BuildingSystem.Instance.Placed)
             {
+                IsSpawningObj = false;
                 ClearArea();
                 Destroy(temp.gameObject);
             }
             
         }
+        
+        Debug.Log(IsSpawningObj);
     }
 
     #endregion
@@ -98,8 +101,10 @@ public class GridBuildingSystem : MonoBehaviour
             return;
         }
 
+        IsSpawningObj = true;
         temp = Instantiate(building, new Vector3(0f, 0.3f, 0f), Quaternion.identity).GetComponent<BuildingSystem>();
         FollowBuilding();
+        
 
     }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -407198575970607597}
   - component: {fileID: 8799794189631775858}
   - component: {fileID: 9071247460244288403}
+  - component: {fileID: -3672097977465636712}
   m_Layer: 0
   m_Name: Coppermine
   m_TagString: OnCopper
@@ -91,6 +92,19 @@ MonoBehaviour:
   CapBlackOut: -10
   Gendown: 0
   addEnergy: 0
+  Building: {fileID: 11400000, guid: fd46a157a73353246b786740bec16ab9, type: 2}
+--- !u!114 &-3672097977465636712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464363199973811286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583b62c7ee29e0e4297ed02f78970199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   Building: {fileID: 11400000, guid: fd46a157a73353246b786740bec16ab9, type: 2}
 --- !u!1 &7460262210244628743
 GameObject:

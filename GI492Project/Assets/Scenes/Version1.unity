@@ -1857,18 +1857,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1794567757}
-        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
-        m_MethodName: SpawnGen
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 07fa3ac5d216f3b4883da1045dc1ec2b, type: 2}
-          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 313388001}
         m_TargetAssemblyTypeName: GridBuildingSystem, Assembly-CSharp
         m_MethodName: InitializeWithBuilding
@@ -1876,6 +1864,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1464363199973811286, guid: 70a377a3650952e4abfa2965133976e5, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1794567757}
+        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
+        m_MethodName: SpawnGen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 07fa3ac5d216f3b4883da1045dc1ec2b, type: 2}
+          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1950,7 +1950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Blackout: {fileID: 273650187}
   _blackout: {fileID: 726712217}
-  _blackoutTime: 20
+  _blackoutTime: 60
   _curTime: 0
   _timecout: 1
   _negEnergy: -1
@@ -2345,18 +2345,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1794567757}
-        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
-        m_MethodName: SpawnGen
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: fd46a157a73353246b786740bec16ab9, type: 2}
-          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 313388001}
         m_TargetAssemblyTypeName: GridBuildingSystem, Assembly-CSharp
         m_MethodName: InitializeWithBuilding
@@ -2364,6 +2352,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1464363199973811286, guid: 98dddeede6dc9b748aed7107a9fd63b5, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1794567757}
+        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
+        m_MethodName: SpawnGen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: fd46a157a73353246b786740bec16ab9, type: 2}
+          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3055,18 +3055,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1794567757}
-        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
-        m_MethodName: SpawnGen
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 9c31f00be48023a4d9407a59991a1f6f, type: 2}
-          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 313388001}
         m_TargetAssemblyTypeName: GridBuildingSystem, Assembly-CSharp
         m_MethodName: InitializeWithBuilding
@@ -3074,6 +3062,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1464363199973811286, guid: 9f583004c8adc9d4f9f74aaf112ea2e2, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1794567757}
+        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
+        m_MethodName: SpawnGen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 9c31f00be48023a4d9407a59991a1f6f, type: 2}
+          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3274,7 +3274,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destroyBotton: {fileID: 975652113}
   _waitTime: 0.2
-  isGens: {fileID: 0}
+  _Buildings:
+  - {fileID: 11400000, guid: fd46a157a73353246b786740bec16ab9, type: 2}
+  - {fileID: 11400000, guid: 07fa3ac5d216f3b4883da1045dc1ec2b, type: 2}
+  - {fileID: 11400000, guid: bae8b03ddb387f94f8e9c6258f98d3cf, type: 2}
+  - {fileID: 11400000, guid: 9c31f00be48023a4d9407a59991a1f6f, type: 2}
+  - {fileID: 11400000, guid: d817359a5ba74574abf6d08c5889cf56, type: 2}
+  - {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
 --- !u!4 &925867791
 Transform:
   m_ObjectHideFlags: 0
@@ -4378,18 +4384,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1794567757}
-        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
-        m_MethodName: SpawnGen
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: bae8b03ddb387f94f8e9c6258f98d3cf, type: 2}
-          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 313388001}
         m_TargetAssemblyTypeName: GridBuildingSystem, Assembly-CSharp
         m_MethodName: InitializeWithBuilding
@@ -4397,6 +4391,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1464363199973811286, guid: 55440802ee169894a935bdb42a27da7b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1794567757}
+        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
+        m_MethodName: SpawnGen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: bae8b03ddb387f94f8e9c6258f98d3cf, type: 2}
+          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5403,18 +5409,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1794567757}
-        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
-        m_MethodName: SpawnGen
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
-          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 313388001}
         m_TargetAssemblyTypeName: GridBuildingSystem, Assembly-CSharp
         m_MethodName: InitializeWithBuilding
@@ -5422,6 +5416,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1464363199973811286, guid: 7a42be8ab14c08c46a7a85505185d98f, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1794567757}
+        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
+        m_MethodName: SpawnGen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
+          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5596,18 +5602,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1794567757}
-        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
-        m_MethodName: SpawnGen
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: d817359a5ba74574abf6d08c5889cf56, type: 2}
-          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 313388001}
         m_TargetAssemblyTypeName: GridBuildingSystem, Assembly-CSharp
         m_MethodName: InitializeWithBuilding
@@ -5615,6 +5609,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1464363199973811286, guid: 3d91051de357f534d9f77e56fb9c463a, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1794567757}
+        m_TargetAssemblyTypeName: StatsResource, Assembly-CSharp
+        m_MethodName: SpawnGen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d817359a5ba74574abf6d08c5889cf56, type: 2}
+          m_ObjectArgumentAssemblyTypeName: CostBuilding, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

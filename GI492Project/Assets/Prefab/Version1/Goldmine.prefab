@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -407198575970607597}
   - component: {fileID: 8799794189631775858}
   - component: {fileID: 9071247460244288403}
+  - component: {fileID: -1647986829901100885}
   m_Layer: 0
   m_Name: Goldmine
   m_TagString: OnGold
@@ -91,6 +92,19 @@ MonoBehaviour:
   CapBlackOut: -10
   Gendown: 0
   addEnergy: 0
+  Building: {fileID: 11400000, guid: 07fa3ac5d216f3b4883da1045dc1ec2b, type: 2}
+--- !u!114 &-1647986829901100885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464363199973811286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583b62c7ee29e0e4297ed02f78970199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   Building: {fileID: 11400000, guid: 07fa3ac5d216f3b4883da1045dc1ec2b, type: 2}
 --- !u!1 &7460262210244628743
 GameObject:

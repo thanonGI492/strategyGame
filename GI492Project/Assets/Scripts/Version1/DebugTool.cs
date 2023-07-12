@@ -33,6 +33,7 @@ public class DebugTool : MonoBehaviour
 
     public void newresource()
     {
+        StatsResource.TotalEnergy += AddResource;
         StatsResource.TotalWood += AddResource;
         StatsResource.TotalCopper += AddResource;
         StatsResource.TotalGold += AddResource;

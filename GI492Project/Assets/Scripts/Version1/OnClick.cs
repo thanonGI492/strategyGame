@@ -11,9 +11,7 @@ public class OnClick : MonoBehaviour
     public GameObject _destroyBotton;
     private GameObject _ourGameObj;
     public float _waitTime;
-    
-    
-    
+    public CostBuilding[] _Buildings;
     
     // Start is called before the first frame update
     void Start()
@@ -58,6 +56,16 @@ public class OnClick : MonoBehaviour
 
     public void DestroyST()
     {
+        foreach (var B in _Buildings)
+        {
+            if (B.NameBuilding == _ourGameObj.GetComponent<Gens>().Building.NameBuilding)
+            {
+                StatsResource.TotalEnergy += B.ReturnENG;
+                Debug.Log(_ourGameObj.GetComponent<Gens>().Building.NameBuilding);
+            }
+            
+        }
+        
         Destroy(_ourGameObj);
         _destroyBotton.SetActive(false);
     }

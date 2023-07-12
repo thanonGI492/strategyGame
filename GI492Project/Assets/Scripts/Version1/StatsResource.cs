@@ -58,13 +58,9 @@ public class StatsResource : MonoBehaviour
             Debug.Log("Insufficient Resource");
             GridBuildingSystem.Instance.IsSpawningObj = true;
             return;
+            
         }
-        TotalWood -= cost.CostWood;
-        TotalStone -= cost.CostStone;
-        TotalCopper -= cost.CostCopper;
-        TotalIron -= cost.CostIron;
-        TotalGold -= cost.CostGold;
-        GridBuildingSystem.Instance.IsSpawningObj = false;
+       
     }
 
     #endregion
