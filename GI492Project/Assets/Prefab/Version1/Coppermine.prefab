@@ -87,9 +87,10 @@ MonoBehaviour:
   spawnTime: 2
   energyDrain: 2
   drainTime: 2
-  BlackOut: 0
+  BlackOut: 1
   CapBlackOut: -10
-  TotalDain: -10
+  Gendown: 0
+  addEnergy: 0
   Building: {fileID: 11400000, guid: fd46a157a73353246b786740bec16ab9, type: 2}
 --- !u!1 &7460262210244628743
 GameObject:

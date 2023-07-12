@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8799794189631775858}
   - component: {fileID: 9071247460244288403}
   m_Layer: 0
-  m_Name: Stonemine
+  m_Name: StoneMine
   m_TagString: OnStone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +87,10 @@ MonoBehaviour:
   spawnTime: 2
   energyDrain: 2
   drainTime: 2
+  BlackOut: 1
+  CapBlackOut: -10
+  Gendown: 0
+  addEnergy: 0
   Building: {fileID: 11400000, guid: d817359a5ba74574abf6d08c5889cf56, type: 2}
 --- !u!1 &7460262210244628743
 GameObject:

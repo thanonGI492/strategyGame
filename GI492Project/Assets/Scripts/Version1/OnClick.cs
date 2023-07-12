@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OnClick : MonoBehaviour
@@ -8,6 +10,9 @@ public class OnClick : MonoBehaviour
     private Camera camera;
     public GameObject _destroyBotton;
     private GameObject _ourGameObj;
+    public float _waitTime;
+    public Gens isGens;
+    
     
     
     // Start is called before the first frame update
@@ -21,6 +26,8 @@ public class OnClick : MonoBehaviour
     void Update()
     {
         DetectObjectWithRaycast();
+
+       
     }
 
     public void DetectObjectWithRaycast()
@@ -57,8 +64,9 @@ public class OnClick : MonoBehaviour
 
     public IEnumerator onOpen()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(_waitTime);
         _destroyBotton.SetActive(false);
     }
+
     
 }

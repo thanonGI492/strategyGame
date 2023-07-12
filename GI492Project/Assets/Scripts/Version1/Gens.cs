@@ -9,9 +9,10 @@ public class Gens : MonoBehaviour
     [SerializeField] private int spawnTime;
     [SerializeField] private int energyDrain;
     [SerializeField] private int drainTime;
-    [SerializeField] private int BlackOut;
+    [SerializeField] private int BlackOut = 1;
     [SerializeField] private int CapBlackOut = -10;
     [SerializeField] private int Gendown = 0;
+    [SerializeField] private int addEnergy = 1;
     
 
     //private variable
@@ -31,7 +32,7 @@ public class Gens : MonoBehaviour
         switch (Building.NameBuilding)
         {
             case "Windmill":
-                StartCoroutine(energyGen());
+                StatsResource.TotalEnergy += addEnergy;
                 break;
             case "Sawmill":
                 StartCoroutine(woodGen());
@@ -52,7 +53,14 @@ public class Gens : MonoBehaviour
 
         if (Building.NameBuilding != "Windmill")
         {
-            StartCoroutine(EnergyDrain());
+            if (StatsResource.TotalEnergy >= CapBlackOut)
+            {
+                StatsResource.TotalEnergy -= energyDrain;
+            }
+            else
+            {
+                StatsResource.TotalEnergy = CapBlackOut;
+            }
         }
 
 
@@ -60,7 +68,7 @@ public class Gens : MonoBehaviour
         GridBuildingSystem.Instance.IsSpawningObj = true;
     }
 
-    IEnumerator EnergyDrain()
+    /*IEnumerator EnergyDrain()
     {
         yield return new WaitForSeconds(drainTime);
         if (StatsResource.TotalEnergy >= CapBlackOut)
@@ -74,13 +82,13 @@ public class Gens : MonoBehaviour
         
         StartCoroutine(EnergyDrain());
     }
-
-    IEnumerator energyGen()
+    */
+    /*IEnumerator energyGen()
     {
         yield return new WaitForSeconds(spawnTime);
         StatsResource.TotalEnergy += (int)(_baseLv * controlStatGens);
         StartCoroutine(energyGen());
-    }
+    }*/
 
     IEnumerator woodGen()
     {
@@ -100,7 +108,6 @@ public class Gens : MonoBehaviour
         {
             StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
         }
-        StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
         StartCoroutine(stoneGen());
     }
 
