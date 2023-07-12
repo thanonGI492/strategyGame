@@ -12,6 +12,8 @@ public class BlackOutTime : MonoBehaviour
     public int _blackoutTime;
     public int _curTime;
     public int _timecout;
+    public int _negEnergy;
+    public int _blankOut;
     
     
     // Start is called before the first frame update
@@ -24,7 +26,7 @@ public class BlackOutTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (StatsResource.TotalEnergy <= -1)
+        if (StatsResource.TotalEnergy <= _negEnergy)
         {
            Blackout.SetActive(true);
            timer += Time.deltaTime;
@@ -36,7 +38,7 @@ public class BlackOutTime : MonoBehaviour
             _blackout.text = "BlackOut : " + _curTime;
         }
 
-        if (StatsResource.TotalEnergy >= 0 && Blackout.activeInHierarchy == true)
+        if (StatsResource.TotalEnergy >= _blankOut && Blackout.activeInHierarchy == true)
         {
             _curTime = _blackoutTime;
             Blackout.SetActive(false);
