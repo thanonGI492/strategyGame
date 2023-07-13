@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Quest 
+public class Questopen 
 {
     public bool isActive;
 
@@ -11,3 +11,4 @@ public class Quest
     public string description;
 
 }
+

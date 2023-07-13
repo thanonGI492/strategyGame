@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Questgiver : MonoBehaviour
 {
-    public Quest quest;
+    public Questopen quest;
 
     public GameObject questlist;
     
