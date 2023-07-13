@@ -65,6 +65,7 @@ public class BuildingSystem : MonoBehaviour
         if (col.gameObject.GetComponent<BuildingSystem>())
         {
             _collideObject = true;
+            Debug.Log("IsCol");
         }
     }
 
