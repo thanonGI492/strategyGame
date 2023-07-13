@@ -13,6 +13,4 @@ public class CostBuilding : ScriptableObject
     public int CostGold;
     public int ReturnENG;
     public int DeductENG;
-    public int MaxDrainCap;
-    public int MinDrainCap;
 }

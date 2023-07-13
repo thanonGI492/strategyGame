@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Gens : MonoBehaviour
@@ -12,15 +11,7 @@ public class Gens : MonoBehaviour
     [SerializeField] private int drainTime;
     [SerializeField] private int BlackOut = 1;
     [SerializeField] private int CapBlackOut = -10;
-    
-    [Header("OnGen_Setting")]
-     public int OnGenswood = 0;
-     public int OnGensstone = 0;
-     public int OnGenscopper = 0;
-     public int OnGensiron = 0;
-     public int OnGensgold = 0;
-     public int Breakpoint = 0;
-     
+    [SerializeField] private int Gendown = 0;
     
 
     //private variable
@@ -99,16 +90,10 @@ public class Gens : MonoBehaviour
     {
         Debug.Log("Start");
         yield return new WaitForSeconds(spawnTime);
-        if (StatsResource.TotalEnergy > BlackOut )
+        if (StatsResource.TotalEnergy > BlackOut)
         {
              StatsResource.TotalWood += (int)(_baseLv * controlStatGens);
-             OnGenswood -= (int) (_baseLv * controlStatGens);
-              if (OnGenswood == 0)
-              {
-                  yield break;
-              }
         }
-        
         StartCoroutine(woodGen());
         
     }
@@ -119,11 +104,6 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
-            OnGensstone -= (int) (_baseLv * controlStatGens);
-            if (OnGensstone == 0)
-            {
-                yield break;
-            }
         }
         StartCoroutine(stoneGen());
     }
@@ -134,11 +114,6 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalCopper += (int)(_baseLv * controlStatGens);
-            OnGenscopper -= (int) (_baseLv * controlStatGens);
-            if (OnGenscopper == 0)
-            {
-                yield break;
-            }
         }
         StartCoroutine(copperGen());
     }
@@ -149,11 +124,6 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalIron += (int)(_baseLv * controlStatGens);
-            OnGensiron -= (int) (_baseLv * controlStatGens);
-            if (OnGensiron == 0)
-            {
-                yield break;
-            }
         }
        
         StartCoroutine(ironGen());
@@ -165,11 +135,6 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalGold += (int)(_baseLv * controlStatGens);
-            OnGensgold -= (int) (_baseLv * controlStatGens);
-            if (OnGensgold == 0)
-            {
-                yield break;
-            }
         }
         StartCoroutine(goldGen());
     }
