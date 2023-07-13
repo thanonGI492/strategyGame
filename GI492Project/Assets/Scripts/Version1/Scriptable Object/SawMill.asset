@@ -19,3 +19,6 @@ MonoBehaviour:
   CostIron: 0
   CostGold: 0
   ReturnENG: 2
+  DeductENG: 0
+  MaxDrainCap: 10
+  MinDrainCap: 0
