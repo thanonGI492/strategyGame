@@ -64,12 +64,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlStatGens: 1
-  spawnTime: 1
+  spawnTime: 2
   energyDrain: 0
   drainTime: 2
   BlackOut: 0
   CapBlackOut: -10
   Gendown: 0
+  OnGenswood: 100
+  OnGensstone: 100
+  OnGenscopper: 70
+  OnGensiron: 70
+  OnGensgold: 70
+  Breakpoint: 0
   Building: {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
 --- !u!65 &323113668867839416
 BoxCollider:
@@ -90,8 +96,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8267643, y: 0.6309327, z: 1}
-  m_Center: {x: 0.0075319707, y: 0.071553886, z: 0}
+  m_Size: {x: 0.64072126, y: 0.27403393, z: 1}
+  m_Center: {x: -0.0057567656, y: 0.07155387, z: 0}
 --- !u!54 &-2782746334985924120
 Rigidbody:
   m_ObjectHideFlags: 0

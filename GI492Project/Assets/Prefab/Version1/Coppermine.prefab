@@ -91,6 +91,12 @@ MonoBehaviour:
   BlackOut: 0
   CapBlackOut: -10
   Gendown: 0
+  OnGenswood: 100
+  OnGensstone: 100
+  OnGenscopper: 70
+  OnGensiron: 70
+  OnGensgold: 70
+  Breakpoint: 0
   Building: {fileID: 11400000, guid: fd46a157a73353246b786740bec16ab9, type: 2}
 --- !u!54 &4185243676694325539
 Rigidbody:
