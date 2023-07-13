@@ -5,8 +5,16 @@ using UnityEngine;
 
 public class CheckCost : MonoBehaviour
 {
+    public static CheckCost Instance;
+
     public CostBuilding Building;
     public bool _ifPlaced;
+    [HideInInspector] public bool Placed;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void OnMouseUp()
     {
@@ -15,7 +23,7 @@ public class CheckCost : MonoBehaviour
             return;
         }
 
-        if (BuildingSystem.Instance.Placed)
+        if (BuildingSystem.Instance.Placed && Placed)
         {
             StatsResource.TotalWood -= Building.CostWood;
             StatsResource.TotalStone -= Building.CostStone;
@@ -24,7 +32,6 @@ public class CheckCost : MonoBehaviour
             StatsResource.TotalGold -= Building.CostGold;
             GridBuildingSystem.Instance.IsSpawningObj = false;
             _ifPlaced = true;
-            
         } 
         
         

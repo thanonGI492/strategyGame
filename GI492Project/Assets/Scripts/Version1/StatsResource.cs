@@ -22,6 +22,7 @@ public class StatsResource : MonoBehaviour
     [HideInInspector] public static int TotalCopper;
     [HideInInspector] public static int TotalIron;
     [HideInInspector] public static int TotalGold;
+    [HideInInspector] public bool WaitingPlace;
 
 
     #region Unity Method
@@ -53,14 +54,24 @@ public class StatsResource : MonoBehaviour
 
     public void SpawnGen(CostBuilding cost)
     {
-        if (TotalWood < cost.CostWood || TotalStone < cost.CostStone || TotalCopper < cost.CostCopper || TotalIron < cost.CostIron || TotalGold < cost.CostGold)
+        if (WaitingPlace)
+        {
+            return;
+        }
+
+        if (TotalWood < cost.CostWood || TotalStone < cost.CostStone || TotalCopper < cost.CostCopper || TotalIron < cost.CostIron)
         {
             Debug.Log("Insufficient Resource");
             GridBuildingSystem.Instance.IsSpawningObj = true;
             return;
-            
         }
-       
+        TotalWood -= cost.CostWood;
+        TotalStone -= cost.CostStone;
+        TotalCopper -= cost.CostCopper;
+        TotalIron -= cost.CostIron;
+        TotalGold -= cost.CostGold;
+        WaitingPlace = true;
+        GridBuildingSystem.Instance.IsSpawningObj = false;
     }
 
     #endregion

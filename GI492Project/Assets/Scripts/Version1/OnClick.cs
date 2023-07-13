@@ -61,6 +61,7 @@ public class OnClick : MonoBehaviour
             if (B.NameBuilding == _ourGameObj.GetComponent<Gens>().Building.NameBuilding)
             {
                 StatsResource.TotalEnergy += B.ReturnENG;
+                StatsResource.TotalEnergy -= B.DeductENG;
                 Debug.Log(_ourGameObj.GetComponent<Gens>().Building.NameBuilding);
             }
             

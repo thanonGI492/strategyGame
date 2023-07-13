@@ -12,7 +12,6 @@ public class Gens : MonoBehaviour
     [SerializeField] private int BlackOut = 1;
     [SerializeField] private int CapBlackOut = -10;
     [SerializeField] private int Gendown = 0;
-    [SerializeField] private int addEnergy = 1;
     
 
     //private variable
@@ -30,43 +29,40 @@ public class Gens : MonoBehaviour
             return;
         }
 
-        switch (Building.NameBuilding)
+        if (BuildingSystem.Instance.Placed)
         {
-            case "Windmill":
-                StatsResource.TotalEnergy += addEnergy;
-                break;
-            case "Sawmill":
-                StartCoroutine(woodGen());
-                break;
-            case "Stonemine":
-                StartCoroutine(stoneGen());
-                break;
-            case "Coppermine":
-                StartCoroutine(copperGen());
-                break;
-            case "Ironmine":
-                StartCoroutine(ironGen());
-                break;
-            case "Goldmine":
-                StartCoroutine(goldGen());
-                break;
-        }
-
-        if (Building.NameBuilding != "Windmill")
-        {
-            if (StatsResource.TotalEnergy >= CapBlackOut)
+            switch (Building.NameBuilding)
+            {
+                case "Windmill":
+                    StartCoroutine(energyGen());
+                    break;
+                case "Sawmill":
+                    StartCoroutine(woodGen());
+                    break;
+                case "Stonemine":
+                    StartCoroutine(stoneGen());
+                    break;
+                case "Coppermine":
+                    StartCoroutine(copperGen());
+                    break;
+                case "Ironmine":
+                    StartCoroutine(ironGen());
+                    break;
+                case "Goldmine":
+                    StartCoroutine(goldGen());
+                    break;
+            }
+            if (StatsResource.TotalEnergy > CapBlackOut)
             {
                 StatsResource.TotalEnergy -= energyDrain;
+                _placed = true;
+                GridBuildingSystem.Instance.IsSpawningObj = true;
             }
             else
             {
                 StatsResource.TotalEnergy = CapBlackOut;
             }
         }
-
-
-        _placed = true;
-        GridBuildingSystem.Instance.IsSpawningObj = true;
     }
 
     /*IEnumerator EnergyDrain()
@@ -84,17 +80,17 @@ public class Gens : MonoBehaviour
         StartCoroutine(EnergyDrain());
     }
     */
-    /*IEnumerator energyGen()
+    IEnumerator energyGen()
     {
         yield return new WaitForSeconds(spawnTime);
         StatsResource.TotalEnergy += (int)(_baseLv * controlStatGens);
-        StartCoroutine(energyGen());
-    }*/
+    }
 
     IEnumerator woodGen()
     {
+        Debug.Log("Start");
         yield return new WaitForSeconds(spawnTime);
-        if (StatsResource.TotalEnergy >= BlackOut)
+        if (StatsResource.TotalEnergy > BlackOut)
         {
              StatsResource.TotalWood += (int)(_baseLv * controlStatGens);
         }
@@ -105,7 +101,7 @@ public class Gens : MonoBehaviour
     IEnumerator stoneGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        if (StatsResource.TotalEnergy >= BlackOut)
+        if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
         }
@@ -115,7 +111,7 @@ public class Gens : MonoBehaviour
     IEnumerator copperGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        if (StatsResource.TotalEnergy >= BlackOut)
+        if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalCopper += (int)(_baseLv * controlStatGens);
         }
@@ -125,7 +121,7 @@ public class Gens : MonoBehaviour
     IEnumerator ironGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        if (StatsResource.TotalEnergy >= BlackOut)
+        if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalIron += (int)(_baseLv * controlStatGens);
         }
@@ -136,7 +132,7 @@ public class Gens : MonoBehaviour
     IEnumerator goldGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        if (StatsResource.TotalEnergy >= BlackOut)
+        if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalGold += (int)(_baseLv * controlStatGens);
         }

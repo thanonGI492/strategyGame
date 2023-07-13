@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: -407198575970607597}
   - component: {fileID: -7870873669150989174}
   - component: {fileID: 323113668867839416}
-  - component: {fileID: -5299686482250695478}
   m_Layer: 0
   m_Name: Windmill
   m_TagString: OnHill
@@ -67,10 +66,9 @@ MonoBehaviour:
   spawnTime: 1
   energyDrain: 0
   drainTime: 2
-  BlackOut: 1
+  BlackOut: 0
   CapBlackOut: -10
   Gendown: 0
-  addEnergy: 1
   Building: {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
 --- !u!65 &323113668867839416
 BoxCollider:
@@ -91,21 +89,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-5299686482250695478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464363199973811286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 583b62c7ee29e0e4297ed02f78970199, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Building: {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
+  m_Size: {x: 0.8267643, y: 0.6309327, z: 1}
+  m_Center: {x: 0.0075319707, y: 0.071553886, z: 0}
 --- !u!1 &7460262210244628743
 GameObject:
   m_ObjectHideFlags: 0
