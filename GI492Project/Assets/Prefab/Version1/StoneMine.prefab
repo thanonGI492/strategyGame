@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8799794189631775858}
   - component: {fileID: 9071247460244288403}
   m_Layer: 0
-  m_Name: Stonemine
+  m_Name: StoneMine
   m_TagString: OnStone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 840775911462616348}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-407198575970607597
 MonoBehaviour:
@@ -87,6 +87,9 @@ MonoBehaviour:
   spawnTime: 2
   energyDrain: 2
   drainTime: 2
+  BlackOut: 0
+  CapBlackOut: -10
+  Gendown: 0
   Building: {fileID: 11400000, guid: d817359a5ba74574abf6d08c5889cf56, type: 2}
 --- !u!1 &7460262210244628743
 GameObject:
@@ -112,14 +115,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7460262210244628743}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.044, y: 0.098, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0.2753982, w: 0.96133024}
+  m_LocalPosition: {x: 0, y: -0.029, z: 0}
+  m_LocalScale: {x: 0.08255248, y: 0.09834146, z: 0.53535}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 456611246312595613}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -31.972}
 --- !u!212 &299007965460090179
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -161,7 +164,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cce85e132a43842a09301fd497983f25, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d9e847b455fe43449b856d0e6a01532, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

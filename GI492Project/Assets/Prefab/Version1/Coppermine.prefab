@@ -89,7 +89,7 @@ MonoBehaviour:
   drainTime: 2
   BlackOut: 0
   CapBlackOut: -10
-  TotalDain: -10
+  Gendown: 0
   Building: {fileID: 11400000, guid: fd46a157a73353246b786740bec16ab9, type: 2}
 --- !u!1 &7460262210244628743
 GameObject:
@@ -116,8 +116,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7460262210244628743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.044, y: 0.098, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.16095515, y: 0.20953453, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 456611246312595613}
@@ -164,7 +164,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cce85e132a43842a09301fd497983f25, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56c3490354d526b46ba5607c7c7919a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
