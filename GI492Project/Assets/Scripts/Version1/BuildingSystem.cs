@@ -15,6 +15,7 @@ public class BuildingSystem : MonoBehaviour
     //private Variable
     private Vector3 _offSet;
     private Vector3 _prevPos;
+    private bool _collideObject;
 
     #region Unity Method
 
@@ -54,6 +55,24 @@ public class BuildingSystem : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        Debug.Log(_collideObject);
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.GetComponent<BuildingSystem>())
+        {
+            _collideObject = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        _collideObject = false;
+    }
+
     #endregion
 
     #region Build Method
@@ -63,7 +82,7 @@ public class BuildingSystem : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
 
-        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp, gameObject)){
+        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp, gameObject) && !_collideObject){
             return true;
         }
 

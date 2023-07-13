@@ -41,6 +41,7 @@ public class GridBuildingSystem : MonoBehaviour
         tileBases.Add(TileType.Gold, Resources.Load<TileBase>(version + tilePath + "gold"));
         tileBases.Add(TileType.Hill, Resources.Load<TileBase>(version + tilePath + "hill"));
         tileBases.Add(TileType.Stone, Resources.Load<TileBase>(version + tilePath + "stone"));
+        tileBases.Add(TileType.Default, Resources.Load<TileBase>(version + tilePath + "default"));
     }
 
     private void Update(){
@@ -70,7 +71,7 @@ public class GridBuildingSystem : MonoBehaviour
             
         }
         
-        Debug.Log(IsSpawningObj);
+        //Debug.Log(IsSpawningObj);
     }
 
     #endregion
@@ -190,7 +191,7 @@ public class GridBuildingSystem : MonoBehaviour
         {
             if (b != tileBases[TileType.Water] && b != tileBases[TileType.Hill])
             {
-                SetTilesBlock(area, TileType.Empty, mainTilemap);
+                SetTilesBlock(area, TileType.Default, mainTilemap);
             }
         }
     }
@@ -209,5 +210,6 @@ public enum TileType{
     Iron,
     Gold,
     Hill,
-    Stone
+    Stone,
+    Default
 }
