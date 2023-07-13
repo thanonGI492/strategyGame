@@ -179,6 +179,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     public void TakeArea(BoundsInt area){
         SetTilesBlock(area, TileType.Empty, tempTilemap);
+        SetTilesBlock(area, TileType.Empty, mainTilemap);
     }
 
     #endregion
