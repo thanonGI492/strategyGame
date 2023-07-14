@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Gens : MonoBehaviour
@@ -9,9 +10,17 @@ public class Gens : MonoBehaviour
     [SerializeField] private int spawnTime;
     [SerializeField] private int energyDrain;
     [SerializeField] private int drainTime;
-    [SerializeField] private int BlackOut;
+    [SerializeField] private int BlackOut = 1;
     [SerializeField] private int CapBlackOut = -10;
-    [SerializeField] private int Gendown = 0;
+    
+    [Header("OnGen_Setting")]
+     public int OnGenswood = 0;
+     public int OnGensstone = 0;
+     public int OnGenscopper = 0;
+     public int OnGensiron = 0;
+     public int OnGensgold = 0;
+     public int Breakpoint = 0;
+     
     
 
     //private variable
@@ -23,44 +32,49 @@ public class Gens : MonoBehaviour
     #region Unity Method
     private void OnMouseUp()
     {
+        
         if (_placed)
         {
             return;
         }
 
-        switch (Building.NameBuilding)
+        if (BuildingSystem.Instance.Placed)
         {
-            case "Windmill":
-                StartCoroutine(energyGen());
-                break;
-            case "Sawmill":
-                StartCoroutine(woodGen());
-                break;
-            case "Stonemine":
-                StartCoroutine(stoneGen());
-                break;
-            case "Coppermine":
-                StartCoroutine(copperGen());
-                break;
-            case "Ironmine":
-                StartCoroutine(ironGen());
-                break;
-            case "Goldmine":
-                StartCoroutine(goldGen());
-                break;
+            switch (Building.NameBuilding)
+            {
+                case "Windmill":
+                    StartCoroutine(energyGen());
+                    break;
+                case "Sawmill":
+                    StartCoroutine(woodGen());
+                    break;
+                case "Stonemine":
+                    StartCoroutine(stoneGen());
+                    break;
+                case "Coppermine":
+                    StartCoroutine(copperGen());
+                    break;
+                case "Ironmine":
+                    StartCoroutine(ironGen());
+                    break;
+                case "Goldmine":
+                    StartCoroutine(goldGen());
+                    break;
+            }
+            if (StatsResource.TotalEnergy > CapBlackOut)
+            {
+                StatsResource.TotalEnergy -= energyDrain;
+                _placed = true;
+                GridBuildingSystem.Instance.IsSpawningObj = true;
+            }
+            else
+            {
+                StatsResource.TotalEnergy = CapBlackOut;
+            }
         }
-
-        if (Building.NameBuilding != "Windmill")
-        {
-            StartCoroutine(EnergyDrain());
-        }
-
-
-        _placed = true;
-        GridBuildingSystem.Instance.IsSpawningObj = true;
     }
 
-    IEnumerator EnergyDrain()
+    /*IEnumerator EnergyDrain()
     {
         yield return new WaitForSeconds(drainTime);
         if (StatsResource.TotalEnergy >= CapBlackOut)
@@ -74,21 +88,27 @@ public class Gens : MonoBehaviour
         
         StartCoroutine(EnergyDrain());
     }
-
+    */
     IEnumerator energyGen()
     {
         yield return new WaitForSeconds(spawnTime);
         StatsResource.TotalEnergy += (int)(_baseLv * controlStatGens);
-        StartCoroutine(energyGen());
     }
 
     IEnumerator woodGen()
     {
+        Debug.Log("Start");
         yield return new WaitForSeconds(spawnTime);
-        if (StatsResource.TotalEnergy >= BlackOut)
+        if (StatsResource.TotalEnergy > BlackOut )
         {
              StatsResource.TotalWood += (int)(_baseLv * controlStatGens);
+             OnGenswood -= (int) (_baseLv * controlStatGens);
+              if (OnGenswood == 0)
+              {
+                  yield break;
+              }
         }
+        
         StartCoroutine(woodGen());
         
     }
@@ -96,20 +116,29 @@ public class Gens : MonoBehaviour
     IEnumerator stoneGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        if (StatsResource.TotalEnergy >= BlackOut)
+        if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
+            OnGensstone -= (int) (_baseLv * controlStatGens);
+            if (OnGensstone == 0)
+            {
+                yield break;
+            }
         }
-        StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
         StartCoroutine(stoneGen());
     }
 
     IEnumerator copperGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        if (StatsResource.TotalEnergy >= BlackOut)
+        if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalCopper += (int)(_baseLv * controlStatGens);
+            OnGenscopper -= (int) (_baseLv * controlStatGens);
+            if (OnGenscopper == 0)
+            {
+                yield break;
+            }
         }
         StartCoroutine(copperGen());
     }
@@ -117,9 +146,14 @@ public class Gens : MonoBehaviour
     IEnumerator ironGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        if (StatsResource.TotalEnergy >= BlackOut)
+        if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalIron += (int)(_baseLv * controlStatGens);
+            OnGensiron -= (int) (_baseLv * controlStatGens);
+            if (OnGensiron == 0)
+            {
+                yield break;
+            }
         }
        
         StartCoroutine(ironGen());
@@ -128,9 +162,14 @@ public class Gens : MonoBehaviour
     IEnumerator goldGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        if (StatsResource.TotalEnergy >= BlackOut)
+        if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalGold += (int)(_baseLv * controlStatGens);
+            OnGensgold -= (int) (_baseLv * controlStatGens);
+            if (OnGensgold == 0)
+            {
+                yield break;
+            }
         }
         StartCoroutine(goldGen());
     }

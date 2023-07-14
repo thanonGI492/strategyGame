@@ -11,6 +11,7 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField] private GridLayout gridLayout;
     [SerializeField] private Tilemap mainTilemap;
     [SerializeField] private Tilemap tempTilemap;
+    [SerializeField] private CostBuilding[] building;
 
     public GridLayout GridLayout => gridLayout;
     public BuildingSystem Temp => temp;
@@ -19,7 +20,6 @@ public class GridBuildingSystem : MonoBehaviour
     //Private Variable
     private static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
     private BuildingSystem temp;
-    private Vector3 prevPos;
     private BoundsInt prevArea;
 
     #region Unity Methods
@@ -41,6 +41,7 @@ public class GridBuildingSystem : MonoBehaviour
         tileBases.Add(TileType.Gold, Resources.Load<TileBase>(version + tilePath + "gold"));
         tileBases.Add(TileType.Hill, Resources.Load<TileBase>(version + tilePath + "hill"));
         tileBases.Add(TileType.Stone, Resources.Load<TileBase>(version + tilePath + "stone"));
+        tileBases.Add(TileType.Default, Resources.Load<TileBase>(version + tilePath + "default"));
     }
 
     private void Update(){
@@ -52,11 +53,25 @@ public class GridBuildingSystem : MonoBehaviour
         {
             if (!BuildingSystem.Instance.Placed)
             {
+                foreach (var b in building)
+                {
+                    if (b.NameBuilding == temp.GetComponent<Gens>().Building.NameBuilding)
+                    {
+                        StatsResource.TotalWood += b.CostWood;
+                        StatsResource.TotalStone += b.CostStone;
+                        StatsResource.TotalCopper += b.CostCopper;
+                        StatsResource.TotalIron += b.CostIron;
+                    }
+                }
+                IsSpawningObj = false;
+                StatsResource.Instance.WaitingPlace = false;
                 ClearArea();
                 Destroy(temp.gameObject);
             }
             
         }
+        
+        //Debug.Log(IsSpawningObj);
     }
 
     #endregion
@@ -98,8 +113,10 @@ public class GridBuildingSystem : MonoBehaviour
             return;
         }
 
+        IsSpawningObj = true;
         temp = Instantiate(building, new Vector3(0f, 0.3f, 0f), Quaternion.identity).GetComponent<BuildingSystem>();
         FollowBuilding();
+        
 
     }
 
@@ -121,8 +138,25 @@ public class GridBuildingSystem : MonoBehaviour
         TileBase[] tileArray = new TileBase[size];
 
         for (int i = 0; i < baseArray.Length; i++) {
-            if (baseArray[i] == tileBases[TileType.Dirt]){
+            if (baseArray[i] == tileBases[TileType.Dirt])
+            {
+                tileArray[i] = tileBases[TileType.Dirt];
+            }
+            else if (baseArray[i] == tileBases[TileType.Forest])
+            {
                 tileArray[i] = tileBases[TileType.Forest];
+            }
+            else if (baseArray[i] == tileBases[TileType.Stone])
+            {
+                tileArray[i] = tileBases[TileType.Stone];
+            }
+            else if (baseArray[i] == tileBases[TileType.Copper])
+            {
+                tileArray[i] = tileBases[TileType.Copper];
+            }
+            else if (baseArray[i] == tileBases[TileType.Iron])
+            {
+                tileArray[i] = tileBases[TileType.Iron];
             }
             else{
                 FillTiles(tileArray, TileType.Red);
@@ -137,43 +171,29 @@ public class GridBuildingSystem : MonoBehaviour
     public bool CanTakeArea(BoundsInt area, GameObject gameObject){
         TileBase[] baseArray = GetTilesBlock(area, mainTilemap);
         foreach (var b in baseArray){
-            if (b == tileBases[TileType.Dirt] && gameObject.CompareTag("OnDirt")){
+            if ((b == tileBases[TileType.Dirt] && gameObject.CompareTag("OnDirt")) || (b == tileBases[TileType.Forest] && gameObject.CompareTag("OnForest")) ||
+                (b == tileBases[TileType.Hill] && gameObject.CompareTag("OnHill")) || (b == tileBases[TileType.Stone] && gameObject.CompareTag("OnStone")) ||
+                (b == tileBases[TileType.Copper] && gameObject.CompareTag("OnCopper")) || (b == tileBases[TileType.Iron] && gameObject.CompareTag("OnIron")) ||
+                (b == tileBases[TileType.Water] && gameObject.CompareTag("OnWater")) || (b == tileBases[TileType.Gold] && gameObject.CompareTag("OnGold")))
+            {
                 return true;
             } 
-            else if (b == tileBases[TileType.Forest] && gameObject.CompareTag("OnForest")){
-                return true;
-            }
-            else if (b == tileBases[TileType.Water] && gameObject.CompareTag("OnWater"))
-            {
-                return true;
-            }
-            else if (b == tileBases[TileType.Copper] && gameObject.CompareTag("OnCopper"))
-            {
-                return true;
-            }
-            else if (b == tileBases[TileType.Iron] && gameObject.CompareTag("OnIron"))
-            {
-                return true;
-            }
-            else if (b == tileBases[TileType.Gold] && gameObject.CompareTag("OnGold"))
-            {
-                return true;
-            }
-            else if (b == tileBases[TileType.Hill] && gameObject.CompareTag("OnHill"))
-            {
-                return true;
-            }
-            else if (b == tileBases[TileType.Stone] && gameObject.CompareTag("OnStone"))
-            {
-                return true;
-            }
         }
         Debug.Log("Can't place here! Place on: " + gameObject.tag + " tile");
         return false;
     }
 
-    public void TakeArea(BoundsInt area){
+    public void TakeArea(BoundsInt area) {
         SetTilesBlock(area, TileType.Empty, tempTilemap);
+        TileBase[] baseArray = GetTilesBlock(area, mainTilemap);
+
+        foreach (var b in baseArray)
+        {
+            if (b != tileBases[TileType.Water] && b != tileBases[TileType.Hill])
+            {
+                SetTilesBlock(area, TileType.Default, mainTilemap);
+            }
+        }
     }
 
     #endregion
@@ -190,5 +210,6 @@ public enum TileType{
     Iron,
     Gold,
     Hill,
-    Stone
+    Stone,
+    Default
 }

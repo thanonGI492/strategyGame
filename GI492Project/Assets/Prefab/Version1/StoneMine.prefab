@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: -407198575970607597}
   - component: {fileID: 8799794189631775858}
   - component: {fileID: 9071247460244288403}
+  - component: {fileID: -4665207964265696998}
   m_Layer: 0
-  m_Name: Stonemine
+  m_Name: StoneMine
   m_TagString: OnStone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 840775911462616348}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-407198575970607597
 MonoBehaviour:
@@ -65,12 +66,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.89446574, y: 0.69711125, z: 1}
-  m_Center: {x: 0.00791505, y: 0.07692069, z: 0}
+  m_Size: {x: 0.8236406, y: 0.29063642, z: 1}
+  m_Center: {x: 0.00021660328, y: 0.10155555, z: 0}
 --- !u!114 &9071247460244288403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +88,42 @@ MonoBehaviour:
   spawnTime: 2
   energyDrain: 2
   drainTime: 2
+  BlackOut: 0
+  CapBlackOut: -10
+  OnGenswood: 100
+  OnGensstone: 100
+  OnGenscopper: 70
+  OnGensiron: 70
+  OnGensgold: 20
+  Breakpoint: 0
   Building: {fileID: 11400000, guid: d817359a5ba74574abf6d08c5889cf56, type: 2}
+--- !u!54 &-4665207964265696998
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464363199973811286}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7460262210244628743
 GameObject:
   m_ObjectHideFlags: 0
