@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class DebugTool : MonoBehaviour
 {
-    [SerializeField] private int AddResource;
+    /*[SerializeField] private int AddResource;
     public GameObject debug;
 
-     void Start()
+    void Start()
     {
         debug.SetActive(false);
         
@@ -39,5 +39,5 @@ public class DebugTool : MonoBehaviour
         StatsResource.TotalGold += AddResource;
         StatsResource.TotalIron += AddResource;
         StatsResource.TotalStone += AddResource;
-    }
+    }*/
 }

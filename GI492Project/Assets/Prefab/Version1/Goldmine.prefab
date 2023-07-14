@@ -86,11 +86,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlStatGens: 3
   spawnTime: 2
-  energyDrain: 2
+  energyDrain: 10
   drainTime: 2
   BlackOut: 0
   CapBlackOut: -10
   Gendown: 0
+  OnGenswood: 120
+  OnGensstone: 120
+  OnGenscopper: 100
+  OnGensiron: 100
+  OnGensgold: 150
+  Breakpoint: 0
   Building: {fileID: 11400000, guid: 07fa3ac5d216f3b4883da1045dc1ec2b, type: 2}
 --- !u!54 &-7977774646202972950
 Rigidbody:
@@ -115,7 +121,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

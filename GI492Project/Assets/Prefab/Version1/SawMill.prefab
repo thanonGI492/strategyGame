@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: -2050019852503314295}
   m_Layer: 0
   m_Name: SawMill
-  m_TagString: OnDirt
+  m_TagString: OnForest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,6 +145,12 @@ MonoBehaviour:
   BlackOut: 0
   CapBlackOut: -10
   Gendown: 0
+  OnGenswood: 120
+  OnGensstone: 120
+  OnGenscopper: 100
+  OnGensiron: 100
+  OnGensgold: 150
+  Breakpoint: 0
   Building: {fileID: 11400000, guid: 9c31f00be48023a4d9407a59991a1f6f, type: 2}
 --- !u!54 &-2050019852503314295
 Rigidbody:

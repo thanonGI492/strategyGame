@@ -12,7 +12,14 @@ public class Gens : MonoBehaviour
     [SerializeField] private int BlackOut = 1;
     [SerializeField] private int CapBlackOut = -10;
     [SerializeField] private int Gendown = 0;
-    
+
+    [Header("OnGens")] 
+    public int OnGenswood = 0;
+    public int OnGensstone = 0;
+    public int OnGenscopper = 0;
+    public int OnGensiron = 0;
+    public int OnGensgold = 0;
+    public int Breakpoint = 0;
 
     //private variable
     private int _baseLv = 1;
@@ -33,6 +40,9 @@ public class Gens : MonoBehaviour
         {
             switch (Building.NameBuilding)
             {
+                case "Solar":
+                case "Thermalplant":
+                case "Hydroelectricplant":
                 case "Windmill":
                     StartCoroutine(energyGen());
                     break;
@@ -65,21 +75,7 @@ public class Gens : MonoBehaviour
         }
     }
 
-    /*IEnumerator EnergyDrain()
-    {
-        yield return new WaitForSeconds(drainTime);
-        if (StatsResource.TotalEnergy >= CapBlackOut)
-        {
-            StatsResource.TotalEnergy -= energyDrain;
-        }
-        else
-        {
-            StatsResource.TotalEnergy = CapBlackOut;
-        }
-        
-        StartCoroutine(EnergyDrain());
-    }
-    */
+
     IEnumerator energyGen()
     {
         yield return new WaitForSeconds(spawnTime);
@@ -93,6 +89,12 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
              StatsResource.TotalWood += (int)(_baseLv * controlStatGens);
+             OnGenswood -= (int)(_baseLv * controlStatGens);
+
+             if (OnGenswood == Breakpoint)
+             {
+                 yield break;
+             }
         }
         StartCoroutine(woodGen());
         
@@ -104,6 +106,12 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
+            OnGensstone -= (int)(_baseLv * controlStatGens);
+
+            if (OnGensstone == Breakpoint)
+            {
+                yield break;
+            }
         }
         StartCoroutine(stoneGen());
     }
@@ -114,6 +122,12 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalCopper += (int)(_baseLv * controlStatGens);
+            OnGenscopper -= (int)(_baseLv * controlStatGens);
+
+            if (OnGenscopper == Breakpoint)
+            {
+                yield break;
+            }
         }
         StartCoroutine(copperGen());
     }
@@ -124,6 +138,12 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalIron += (int)(_baseLv * controlStatGens);
+            OnGensiron -= (int)(_baseLv * controlStatGens);
+
+            if (OnGensiron == Breakpoint)
+            {
+                yield break;
+            }
         }
        
         StartCoroutine(ironGen());
@@ -135,6 +155,12 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             StatsResource.TotalGold += (int)(_baseLv * controlStatGens);
+            OnGensgold -= (int)(_baseLv * controlStatGens);
+
+            if (OnGensgold == Breakpoint)
+            {
+                yield break;
+            }
         }
         StartCoroutine(goldGen());
     }

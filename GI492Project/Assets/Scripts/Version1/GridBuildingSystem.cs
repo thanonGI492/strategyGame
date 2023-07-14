@@ -189,8 +189,9 @@ public class GridBuildingSystem : MonoBehaviour
 
         foreach (var b in baseArray)
         {
-            if (b != tileBases[TileType.Water] && b != tileBases[TileType.Hill])
+            if (b != tileBases[TileType.Water] && b != tileBases[TileType.Hill] && b != tileBases[TileType.Dirt])
             {
+                SetTilesBlock(area, TileType.Empty, mainTilemap);
                 SetTilesBlock(area, TileType.Default, mainTilemap);
             }
         }
