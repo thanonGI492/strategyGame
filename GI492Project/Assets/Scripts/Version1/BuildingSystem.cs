@@ -1,15 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
 public class BuildingSystem : MonoBehaviour
 {
     public static BuildingSystem Instance;
-    [SerializeField] private GameObject floatingTextPrefab;
     [SerializeField] private Transform parentTrans;
+    [SerializeField] private Color rightTile;
+    [SerializeField] private Color wrongTile;
 
     public bool Placed {get; private set;}
 
@@ -19,7 +19,7 @@ public class BuildingSystem : MonoBehaviour
     //private Variable
     private Vector3 _offSet;
     private Vector3 _prevPos;
-    private bool _collideObject;
+    private SpriteRenderer _spriteRend;
     
 
     #region Unity Method
@@ -31,7 +31,7 @@ public class BuildingSystem : MonoBehaviour
 
     private void Start()
     {
-        
+        _spriteRend = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void OnMouseDown(){
@@ -67,35 +67,11 @@ public class BuildingSystem : MonoBehaviour
         }
         else
         {
-            if (floatingTextPrefab)
+            if (StatsResource.Instance.FloatTextPrefab)
             {
-                FloatingText();
+                StatsResource.Instance.FloatingText("Place: ", gameObject.tag, parentTrans);
             }
         }
-    }
-
-    private void FloatingText()
-    { 
-        GameObject floatText = Instantiate(floatingTextPrefab, transform.position, quaternion.identity, parentTrans);
-        floatText.GetComponent<TextMeshPro>().text = "Place on: " + gameObject.tag;
-    }
-
-    private void Update()
-    {
-        Debug.Log(floatingTextPrefab);
-    }
-
-    private void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.GetComponent<BuildingSystem>())
-        {
-            _collideObject = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        _collideObject = false;
     }
 
     #endregion
@@ -107,10 +83,11 @@ public class BuildingSystem : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
 
-        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp, gameObject) && !_collideObject){
+        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp, gameObject) && !CheckCollideObject.CollideObject){
+            _spriteRend.color = rightTile;
             return true;
         }
-
+        _spriteRend.color = wrongTile;
         return false;
     }
 

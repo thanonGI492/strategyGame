@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -7870873669150989174}
   - component: {fileID: 323113668867839416}
   - component: {fileID: -2782746334985924120}
+  - component: {fileID: -2380803603922532319}
   m_Layer: 0
   m_Name: Hydroelectric Plant
   m_TagString: OnWater
@@ -48,8 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bcbb8cc7571154a9671ce87177d911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingTextPrefab: {fileID: 7720259878374139147, guid: 9d00ad9e94ae65c45ae337f6cd7745b8, type: 3}
   parentTrans: {fileID: 456611246312595613}
+  rightTile: {r: 1, g: 0.92679065, b: 0, a: 1}
+  wrongTile: {r: 1, g: 0, b: 0, a: 1}
   area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 1, y: 1, z: 1}
@@ -71,7 +73,6 @@ MonoBehaviour:
   drainTime: 2
   BlackOut: 0
   CapBlackOut: -10
-  Gendown: 0
   OnGenswood: 120
   OnGensstone: 120
   OnGenscopper: 100
@@ -127,6 +128,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2380803603922532319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464363199973811286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990d2e0fc3ca08f4c8924b806d6cf76d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7460262210244628743
 GameObject:
   m_ObjectHideFlags: 0

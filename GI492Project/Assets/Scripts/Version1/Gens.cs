@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Gens : MonoBehaviour
 {
+    public static Gens Instance;
 
     [SerializeField] private float controlStatGens;
     [SerializeField] private int spawnTime;
@@ -11,7 +12,6 @@ public class Gens : MonoBehaviour
     [SerializeField] private int drainTime;
     [SerializeField] private int BlackOut = 1;
     [SerializeField] private int CapBlackOut = -10;
-    [SerializeField] private int Gendown = 0;
 
     [Header("OnGens")] 
     public int OnGenswood = 0;
@@ -28,6 +28,7 @@ public class Gens : MonoBehaviour
     public CostBuilding Building;
 
     #region Unity Method
+
     private void OnMouseUp()
     {
         
@@ -41,7 +42,6 @@ public class Gens : MonoBehaviour
             switch (Building.NameBuilding)
             {
                 case "Solar":
-                case "Thermalplant":
                 case "Hydroelectricplant":
                 case "Windmill":
                     StartCoroutine(energyGen());
@@ -60,6 +60,10 @@ public class Gens : MonoBehaviour
                     break;
                 case "Goldmine":
                     StartCoroutine(goldGen());
+                    break;
+                case "Thermalplant":
+                    StartCoroutine(energyGen());
+                    StartCoroutine(thermalGen());
                     break;
             }
             if (StatsResource.TotalEnergy > CapBlackOut)
@@ -164,6 +168,24 @@ public class Gens : MonoBehaviour
         }
         StartCoroutine(goldGen());
     }
+
+    IEnumerator thermalGen()
+    {
+        yield return new WaitForSeconds(spawnTime);
+        
+        if (StatsResource.TotalWood > Breakpoint) 
+        {
+            StatsResource.TotalWood -= (int)(_baseLv * controlStatGens);
+
+            if (StatsResource.TotalWood <= Breakpoint)
+            {
+                StatsResource.TotalWood = Breakpoint;
+                yield break;
+            }
+        }
+        StartCoroutine(thermalGen());
+    }
+
     
     
     #endregion

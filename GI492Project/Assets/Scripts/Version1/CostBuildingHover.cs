@@ -14,39 +14,35 @@ public class CostBuildingHover : MonoBehaviour
         {
             case "Ironmine":
                 hoverText.text = "Stones: " + cost.CostStone.ToString() + "\n"
-                    + "Coppers: " + cost.CostCopper.ToString() + "\n" + "Enegy: -5";
+                    + "Coppers: " + cost.CostCopper.ToString() + "\n" + "Enegy: -" + cost.ReturnENG;
                 break;
 
             case "Goldmine":
                 hoverText.text = "Coppers: " + cost.CostCopper.ToString() + "\n"
-                    + "Iron: " + cost.CostIron.ToString() + "\n" + "Enegy: -10";
-                break;
-
-            case "Solar":
-                hoverText.text ="Stones: " + cost.CostStone.ToString() + "\n"
-                    + "Coppers: " + cost.CostCopper.ToString() + "\n"
-                    + "Iron: " + cost.CostIron.ToString() + "\n" + "Enegy: +4";
+                    + "Iron: " + cost.CostIron.ToString() + "\n" + "Enegy: -" + cost.ReturnENG;
                 break;
 
             case "Hydroelectricplant":
-                hoverText.text = "Stones: " + cost.CostStone.ToString() + "\n"
+            case "Solar":
+                hoverText.text ="Stones: " + cost.CostStone.ToString() + "\n"
                     + "Coppers: " + cost.CostCopper.ToString() + "\n"
-                    + "Iron: " + cost.CostIron.ToString() + "\n" + "Enegy: +5";
+                    + "Iron: " + cost.CostIron.ToString() + "\n" + "Enegy: +" + cost.DeductENG;
                 break;
 
             case "Windmill":
                  hoverText.text = "Woods: " + cost.CostWood.ToString() + "\n" 
-                    + "Stones: " + cost.CostStone.ToString()+ "\n" + "Enegy: +2";
+                    + "Stones: " + cost.CostStone.ToString()+ "\n" + "Enegy: +" + cost.DeductENG;
                 break;
 
             case "Thermalplant":
                  hoverText.text = "Woods: " + cost.CostWood.ToString() + "\n" 
-                    + "Stones: " + cost.CostStone.ToString()+ "\n" + "Enegy: +3";
+                    + "Stones: " + cost.CostStone.ToString()+ "\n" + "Enegy: +" + cost.DeductENG + "\n" 
+                    + "Cost: Wood " + cost.DrainResource + "/S";
                 break;
 
             case (_):
                 hoverText.text = "Woods: " + cost.CostWood.ToString() + "\n" 
-                    + "Stones: " + cost.CostStone.ToString()+ "\n" + "Enegy: -2";
+                    + "Stones: " + cost.CostStone.ToString()+ "\n" + "Enegy: -" + cost.ReturnENG;
                 break;
             
         }
