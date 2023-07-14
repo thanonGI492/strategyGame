@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -407198575970607597}
   - component: {fileID: 8799794189631775858}
   - component: {fileID: 9071247460244288403}
+  - component: {fileID: -4665207964265696998}
   m_Layer: 0
   m_Name: StoneMine
   m_TagString: OnStone
@@ -65,7 +66,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -91,6 +92,33 @@ MonoBehaviour:
   CapBlackOut: -10
   Gendown: 0
   Building: {fileID: 11400000, guid: d817359a5ba74574abf6d08c5889cf56, type: 2}
+--- !u!54 &-4665207964265696998
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464363199973811286}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7460262210244628743
 GameObject:
   m_ObjectHideFlags: 0

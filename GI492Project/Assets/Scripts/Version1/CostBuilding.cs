@@ -11,4 +11,6 @@ public class CostBuilding : ScriptableObject
     public int CostCopper;
     public int CostIron;
     public int CostGold;
+    public int ReturnENG;
+    public int DeductENG;
 }
