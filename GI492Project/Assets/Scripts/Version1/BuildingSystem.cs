@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class BuildingSystem : MonoBehaviour
 {
     public static BuildingSystem Instance;
-    
+    [SerializeField] private GameObject floatingTextPrefab;
+    [SerializeField] private Transform parentTrans;
 
     public bool Placed {get; private set;}
 
@@ -16,12 +20,18 @@ public class BuildingSystem : MonoBehaviour
     private Vector3 _offSet;
     private Vector3 _prevPos;
     private bool _collideObject;
+    
 
     #region Unity Method
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void OnMouseDown(){
@@ -35,13 +45,15 @@ public class BuildingSystem : MonoBehaviour
         Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + _offSet;
         Vector3Int cellPos = GridBuildingSystem.Instance.GridLayout.LocalToCell(touchPos);
         
-        if (_prevPos != cellPos){
+        if (_prevPos != cellPos)
+        {
                 GridBuildingSystem.Instance.Temp.transform.localPosition = GridBuildingSystem.Instance.GridLayout.CellToLocalInterpolated(cellPos +
                 new Vector3(0.5f, 0.5f, 0f));
 
                 _prevPos = cellPos;
                 GridBuildingSystem.Instance.FollowBuilding();
-            }
+                
+        }
     }
 
     private void OnMouseUp()
@@ -53,11 +65,24 @@ public class BuildingSystem : MonoBehaviour
             GridBuildingSystem.Instance.Temp.Place();
             StatsResource.Instance.WaitingPlace = false;
         }
+        else
+        {
+            if (floatingTextPrefab)
+            {
+                FloatingText();
+            }
+        }
+    }
+
+    private void FloatingText()
+    { 
+        GameObject floatText = Instantiate(floatingTextPrefab, transform.position, quaternion.identity, parentTrans);
+        floatText.GetComponent<TextMeshPro>().text = "Place on: " + gameObject.tag;
     }
 
     private void Update()
     {
-        Debug.Log(_collideObject);
+        Debug.Log(floatingTextPrefab);
     }
 
     private void OnTriggerEnter(Collider col)

@@ -14,6 +14,7 @@ public class StatsResource : MonoBehaviour
     [SerializeField] private Text ironText;
     [SerializeField] private Text goldText;
     [SerializeField] private int beginResource;
+    [SerializeField] private int resetResource;
 
     //public variable
     [HideInInspector] public static int TotalEnergy;
@@ -33,8 +34,12 @@ public class StatsResource : MonoBehaviour
 
     private void Start()
     {
+        TotalEnergy = resetResource;
         TotalWood = beginResource;
         TotalStone = beginResource;
+        TotalCopper = resetResource;
+        TotalIron = resetResource;
+        TotalGold = resetResource;
     }
 
     private void Update()

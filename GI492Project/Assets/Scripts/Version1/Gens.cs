@@ -164,5 +164,7 @@ public class Gens : MonoBehaviour
         }
         StartCoroutine(goldGen());
     }
+    
+    
     #endregion
 }

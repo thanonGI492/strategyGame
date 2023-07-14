@@ -70,8 +70,6 @@ public class GridBuildingSystem : MonoBehaviour
             }
             
         }
-        
-        //Debug.Log(IsSpawningObj);
     }
 
     #endregion
@@ -140,25 +138,38 @@ public class GridBuildingSystem : MonoBehaviour
         for (int i = 0; i < baseArray.Length; i++) {
             if (baseArray[i] == tileBases[TileType.Dirt])
             {
-                tileArray[i] = tileBases[TileType.Dirt];
+                tileArray[i] = tileBases[TileType.Default];
             }
             else if (baseArray[i] == tileBases[TileType.Forest])
             {
-                tileArray[i] = tileBases[TileType.Forest];
+                tileArray[i] = tileBases[TileType.Default];
             }
             else if (baseArray[i] == tileBases[TileType.Stone])
             {
-                tileArray[i] = tileBases[TileType.Stone];
+                tileArray[i] = tileBases[TileType.Default];
             }
             else if (baseArray[i] == tileBases[TileType.Copper])
             {
-                tileArray[i] = tileBases[TileType.Copper];
+                tileArray[i] = tileBases[TileType.Default];
             }
             else if (baseArray[i] == tileBases[TileType.Iron])
             {
-                tileArray[i] = tileBases[TileType.Iron];
+                tileArray[i] = tileBases[TileType.Default];
             }
-            else{
+            else if (baseArray[i] == tileBases[TileType.Gold])
+            {
+                tileArray[i] = tileBases[TileType.Default];
+            }
+            else if (baseArray[i] == tileBases[TileType.Water])
+            {
+                tileArray[i] = tileBases[TileType.Default];
+            }
+            else if (baseArray[i] == tileBases[TileType.Hill])
+            {
+                tileArray[i] = tileBases[TileType.Default];
+            }
+            else
+            {
                 FillTiles(tileArray, TileType.Red);
                 break;
             }

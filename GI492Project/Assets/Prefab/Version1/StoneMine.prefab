@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bcbb8cc7571154a9671ce87177d911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextPrefab: {fileID: 7720259878374139147, guid: 9d00ad9e94ae65c45ae337f6cd7745b8, type: 3}
+  parentTrans: {fileID: 456611246312595613}
   area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 2, y: 2, z: 1}
@@ -150,8 +152,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7460262210244628743}
   m_LocalRotation: {x: -0, y: -0, z: -0.2753982, w: 0.96133024}
-  m_LocalPosition: {x: 0, y: -0.029, z: 0}
-  m_LocalScale: {x: 0.08255248, y: 0.09834146, z: 0.53535}
+  m_LocalPosition: {x: -0.0127, y: 0.2866, z: 0}
+  m_LocalScale: {x: 0.15430875, y: 0.17728034, z: 0.53535}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 456611246312595613}
