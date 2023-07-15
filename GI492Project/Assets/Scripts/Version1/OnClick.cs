@@ -38,7 +38,6 @@ public class OnClick : MonoBehaviour
             if (Physics.Raycast(ray, out hit) || _destroyBotton == false)
             {
                 _ourGameObj = hit.collider.gameObject;
-                Debug.Log ("object that was hit: " + _ourGameObj);
                 if (_ourGameObj.GetComponent<BuildingSystem>().Placed)
                 {
                     _destroyBotton.SetActive(true);

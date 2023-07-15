@@ -16,6 +16,7 @@ public class GridBuildingSystem : MonoBehaviour
     public GridLayout GridLayout => gridLayout;
     public BuildingSystem Temp => temp;
     [HideInInspector] public bool IsSpawningObj;
+    [HideInInspector] public bool IsAlreadyOccupied;
 
     //Private Variable
     private static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
@@ -114,7 +115,7 @@ public class GridBuildingSystem : MonoBehaviour
 
         IsSpawningObj = true;
         temp = Instantiate(building, new Vector3(0f, 0.3f, 0f), Quaternion.identity).GetComponent<BuildingSystem>();
-        FollowBuilding();
+        FollowBuilding(temp.gameObject);
         
 
     }
@@ -125,7 +126,7 @@ public class GridBuildingSystem : MonoBehaviour
         tempTilemap.SetTilesBlock(prevArea, toClear);
     }
     
-    public void FollowBuilding(){
+    public void FollowBuilding(GameObject gameObject){
         ClearArea();
 
         temp.area.position = gridLayout.WorldToCell(temp.gameObject.transform.position);
@@ -137,14 +138,17 @@ public class GridBuildingSystem : MonoBehaviour
         TileBase[] tileArray = new TileBase[size];
 
         for (int i = 0; i < baseArray.Length; i++) {
-            if (baseArray[i] == tileBases[TileType.Dirt] || baseArray[i] == tileBases[TileType.Hill] || baseArray[i] == tileBases[TileType.Water] || 
-                baseArray[i] == tileBases[TileType.Stone] || baseArray[i] == tileBases[TileType.Forest] || baseArray[i] == tileBases[TileType.Copper] ||
-                baseArray[i] == tileBases[TileType.Iron] || baseArray[i] == tileBases[TileType.Gold])
+            if (baseArray[i] == tileBases[TileType.Dirt] && gameObject.CompareTag("OnDirt")|| baseArray[i] == tileBases[TileType.Hill] && gameObject.CompareTag("OnHill")|| 
+                baseArray[i] == tileBases[TileType.Water] && gameObject.CompareTag("OnWater") || baseArray[i] == tileBases[TileType.Stone] && gameObject.CompareTag("OnStone")|| 
+                baseArray[i] == tileBases[TileType.Forest] && gameObject.CompareTag("OnForest") || baseArray[i] == tileBases[TileType.Copper] && gameObject.CompareTag("OnCopper") || 
+                baseArray[i] == tileBases[TileType.Iron] && gameObject.CompareTag("OnIron") || baseArray[i] == tileBases[TileType.Gold] && gameObject.CompareTag("OnGold"))
             {
+                IsAlreadyOccupied = false;
                 tileArray[i] = tileBases[TileType.Default];
             }
             else
             {
+                IsAlreadyOccupied = true;
                 FillTiles(tileArray, TileType.Red);
                 break;
             }
@@ -154,18 +158,17 @@ public class GridBuildingSystem : MonoBehaviour
         prevArea = buildingArea;
     }
 
-    public bool CanTakeArea(BoundsInt area, GameObject gameObject){
+    public bool CanTakeArea(BoundsInt area){
         TileBase[] baseArray = GetTilesBlock(area, mainTilemap);
         foreach (var b in baseArray){
-            if ((b == tileBases[TileType.Dirt] && gameObject.CompareTag("OnDirt")) || (b == tileBases[TileType.Forest] && gameObject.CompareTag("OnForest")) ||
-                (b == tileBases[TileType.Hill] && gameObject.CompareTag("OnHill")) || (b == tileBases[TileType.Stone] && gameObject.CompareTag("OnStone")) ||
-                (b == tileBases[TileType.Copper] && gameObject.CompareTag("OnCopper")) || (b == tileBases[TileType.Iron] && gameObject.CompareTag("OnIron")) ||
-                (b == tileBases[TileType.Water] && gameObject.CompareTag("OnWater")) || (b == tileBases[TileType.Gold] && gameObject.CompareTag("OnGold")))
+            if ((b == tileBases[TileType.Dirt]) || (b == tileBases[TileType.Forest]) ||
+                (b == tileBases[TileType.Hill]) || (b == tileBases[TileType.Stone]) ||
+                (b == tileBases[TileType.Copper]) || (b == tileBases[TileType.Iron]) ||
+                (b == tileBases[TileType.Water]) || (b == tileBases[TileType.Gold]))
             {
                 return true;
             } 
         }
-        Debug.Log("Can't place here! Place on: " + gameObject.tag + " tile");
         return false;
     }
 

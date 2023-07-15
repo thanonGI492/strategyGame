@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bcbb8cc7571154a9671ce87177d911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTrans: {fileID: 456611246312595613}
   rightTile: {r: 1, g: 0.92679065, b: 0, a: 1}
   wrongTile: {r: 1, g: 0, b: 0, a: 1}
   area:
@@ -165,8 +164,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7460262210244628743}
   m_LocalRotation: {x: -0, y: -0, z: -0.22624095, w: 0.9740714}
-  m_LocalPosition: {x: -0.39, y: 0.609, z: 0}
-  m_LocalScale: {x: 0.31905308, y: 0.23546875, z: 0.23546875}
+  m_LocalPosition: {x: -0.241, y: 0.27, z: 0}
+  m_LocalScale: {x: 0.19088222, y: 0.14087561, z: 0.14087561}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 456611246312595613}

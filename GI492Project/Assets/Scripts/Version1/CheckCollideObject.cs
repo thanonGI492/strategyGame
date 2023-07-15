@@ -18,9 +18,4 @@ public class CheckCollideObject : MonoBehaviour
     {
         CollideObject = false;
     }
-
-    private void Update()
-    {
-        Debug.Log(CollideObject);
-    }
 }

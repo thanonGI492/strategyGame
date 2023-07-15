@@ -7,7 +7,6 @@ using UnityEngine;
 public class BuildingSystem : MonoBehaviour
 {
     public static BuildingSystem Instance;
-    [SerializeField] private Transform parentTrans;
     [SerializeField] private Color rightTile;
     [SerializeField] private Color wrongTile;
 
@@ -51,7 +50,7 @@ public class BuildingSystem : MonoBehaviour
                 new Vector3(0.5f, 0.5f, 0f));
 
                 _prevPos = cellPos;
-                GridBuildingSystem.Instance.FollowBuilding();
+                GridBuildingSystem.Instance.FollowBuilding(gameObject);
                 
         }
     }
@@ -65,12 +64,9 @@ public class BuildingSystem : MonoBehaviour
             GridBuildingSystem.Instance.Temp.Place();
             StatsResource.Instance.WaitingPlace = false;
         }
-        else
-        {
-            if (StatsResource.Instance.FloatTextPrefab)
-            {
-                StatsResource.Instance.FloatingText("Place: ", gameObject.tag, parentTrans);
-            }
+        else if(StatsResource.Instance.FloatTextPrefab)
+        { 
+            StatsResource.Instance.FloatingText("Place: ", gameObject.tag);
         }
     }
 
@@ -83,7 +79,7 @@ public class BuildingSystem : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
 
-        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp, gameObject) && !CheckCollideObject.CollideObject){
+        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp) && !CheckCollideObject.CollideObject && !GridBuildingSystem.Instance.IsAlreadyOccupied){
             _spriteRend.color = rightTile;
             return true;
         }

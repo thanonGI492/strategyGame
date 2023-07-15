@@ -88,7 +88,6 @@ public class Gens : MonoBehaviour
 
     IEnumerator woodGen()
     {
-        Debug.Log("Start");
         yield return new WaitForSeconds(spawnTime);
         if (StatsResource.TotalEnergy > BlackOut)
         {

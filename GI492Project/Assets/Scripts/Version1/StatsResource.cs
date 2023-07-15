@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -69,7 +68,7 @@ public class StatsResource : MonoBehaviour
 
         if (TotalWood < cost.CostWood || TotalStone < cost.CostStone || TotalCopper < cost.CostCopper || TotalIron < cost.CostIron)
         {
-            FloatingText("Insufficient" , " Resource!" , null);
+            FloatingText("Insufficient" , " Resource!");
             GridBuildingSystem.Instance.IsSpawningObj = true;
             return;
         }
@@ -82,10 +81,10 @@ public class StatsResource : MonoBehaviour
         GridBuildingSystem.Instance.IsSpawningObj = false;
     }
 
-    public void FloatingText(string changeMessage, string message, Transform parent)
+    public void FloatingText(string changeMessage, string message)
     {
-        GameObject floatText = Instantiate(floatTextPrefab, transform.position, Quaternion.identity, parent);
-        floatText.GetComponent<TextMeshPro>().text = changeMessage + message;
+        GameObject floatText = Instantiate(floatTextPrefab,  transform.position, Quaternion.identity);
+        floatText.GetComponent<TextMesh>().text = changeMessage + message;
     }
 
     #endregion
