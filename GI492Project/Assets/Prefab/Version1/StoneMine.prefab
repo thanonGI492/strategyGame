@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bcbb8cc7571154a9671ce87177d911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTrans: {fileID: 456611246312595613}
   rightTile: {r: 1, g: 0.92679065, b: 0, a: 1}
   wrongTile: {r: 1, g: 0, b: 0, a: 1}
   area:
@@ -74,8 +73,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.89446574, y: 0.69711125, z: 1}
-  m_Center: {x: 0.00791505, y: 0.07692069, z: 0}
+  m_Size: {x: 1.798492, y: 1.096786, z: 1}
+  m_Center: {x: -0.030149251, y: 0.27675807, z: 0}
 --- !u!114 &9071247460244288403
 MonoBehaviour:
   m_ObjectHideFlags: 0
