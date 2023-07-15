@@ -17,7 +17,8 @@ public class StatsResource : MonoBehaviour
     [SerializeField] private int beginResource;
     [SerializeField] private int resetResource;
     [SerializeField] private GameObject floatTextPrefab;
-
+    
+    
     //public variable
     [HideInInspector] public static int TotalEnergy;
     [HideInInspector] public static int TotalWood;

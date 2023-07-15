@@ -20,3 +20,4 @@ MonoBehaviour:
   CostGold: 0
   ReturnENG: 0
   DeductENG: 1
+  DrainResource: 0

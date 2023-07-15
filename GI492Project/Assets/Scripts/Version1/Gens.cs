@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,19 +14,28 @@ public class Gens : MonoBehaviour
     [SerializeField] private int BlackOut = 1;
     [SerializeField] private int CapBlackOut = -10;
 
-    [Header("OnGens")] 
-    public int OnGenswood = 0;
+    [Header("OnGens")]
+    public int OnGenswood ;
     public int OnGensstone = 0;
     public int OnGenscopper = 0;
     public int OnGensiron = 0;
     public int OnGensgold = 0;
     public int Breakpoint = 0;
 
+    [Header("OnDrain")]
+    public float Thermal;
+    
     //private variable
     private int _baseLv = 1;
     private bool _placed;
     //public variable
     public CostBuilding Building;
+
+
+    private void Update()
+    {
+        Thermal = controlStatGens;
+    }
 
     #region Unity Method
 
@@ -172,6 +182,7 @@ public class Gens : MonoBehaviour
     IEnumerator thermalGen()
     {
         yield return new WaitForSeconds(spawnTime);
+        
         
         if (StatsResource.TotalWood > Breakpoint) 
         {
