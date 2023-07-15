@@ -1,58 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &398920309282880415
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7792740208012567913}
-  - component: {fileID: 7429457270781457356}
-  m_Layer: 0
-  m_Name: Box
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7792740208012567913
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398920309282880415}
-  m_LocalRotation: {x: -0, y: -0, z: -0.17686652, w: 0.9842349}
-  m_LocalPosition: {x: -0.237, y: 0.181, z: 0.01069794}
-  m_LocalScale: {x: 1.2457, y: 0.375, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 456611246312595613}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20.375}
---- !u!65 &7429457270781457356
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398920309282880415}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1464363199973811286
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 456611246312595613}
   - component: {fileID: -407198575970607597}
-  - component: {fileID: 8386240393412876935}
   - component: {fileID: -7638211277661079040}
-  - component: {fileID: -2050019852503314295}
+  - component: {fileID: 2593107950506724484}
+  - component: {fileID: 6633908694602236350}
+  - component: {fileID: 7052747971030120064}
   m_Layer: 0
   m_Name: SawMill
-  m_TagString: OnDirt
+  m_TagString: OnForest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +34,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 840775911462616348}
-  - {fileID: 7792740208012567913}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -102,30 +49,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bcbb8cc7571154a9671ce87177d911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentTrans: {fileID: 456611246312595613}
+  rightTile: {r: 1, g: 0.92679065, b: 0, a: 1}
+  wrongTile: {r: 1, g: 0, b: 0, a: 1}
   area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 1, y: 2, z: 1}
---- !u!65 &8386240393412876935
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464363199973811286}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.6207228, y: 0.33992937, z: 1}
-  m_Center: {x: -0.1928125, y: 0.19890921, z: 0}
 --- !u!114 &-7638211277661079040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,15 +73,14 @@ MonoBehaviour:
   drainTime: 2
   BlackOut: 0
   CapBlackOut: -10
-  Gendown: 0
-  OnGenswood: 2
-  OnGensstone: 100
-  OnGenscopper: 70
-  OnGensiron: 70
-  OnGensgold: 70
+  OnGenswood: 120
+  OnGensstone: 120
+  OnGenscopper: 100
+  OnGensiron: 100
+  OnGensgold: 150
   Breakpoint: 0
   Building: {fileID: 11400000, guid: 9c31f00be48023a4d9407a59991a1f6f, type: 2}
---- !u!54 &-2050019852503314295
+--- !u!54 &2593107950506724484
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,6 +107,39 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6633908694602236350
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464363199973811286}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0587456, y: 0.7048929, z: 1}
+  m_Center: {x: -0.3777274, y: 0.6083735, z: 0}
+--- !u!114 &7052747971030120064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464363199973811286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990d2e0fc3ca08f4c8924b806d6cf76d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7460262210244628743
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,14 +164,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7460262210244628743}
-  m_LocalRotation: {x: -0.024356633, y: 0.26665694, z: -0.08764046, w: 0.95948946}
-  m_LocalPosition: {x: -0.157, y: 0.201, z: 0.144}
-  m_LocalScale: {x: 0.9631129, y: 0.41602504, z: 0.47842556}
+  m_LocalRotation: {x: -0, y: -0, z: -0.22624095, w: 0.9740714}
+  m_LocalPosition: {x: -0.39, y: 0.609, z: 0}
+  m_LocalScale: {x: 0.31905308, y: 0.23546875, z: 0.23546875}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 456611246312595613}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 31.063, z: -10.438}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -26.152}
 --- !u!212 &299007965460090179
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -252,7 +213,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cce85e132a43842a09301fd497983f25, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d53d74d7d0d9374419f9f8cebd717d2f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

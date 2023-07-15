@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -7870873669150989174}
   - component: {fileID: 323113668867839416}
   - component: {fileID: -2782746334985924120}
+  - component: {fileID: -3325269038500445306}
   m_Layer: 0
   m_Name: Windmill
   m_TagString: OnHill
@@ -48,6 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bcbb8cc7571154a9671ce87177d911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentTrans: {fileID: 456611246312595613}
+  rightTile: {r: 1, g: 0.92679065, b: 0, a: 1}
+  wrongTile: {r: 1, g: 0, b: 0, a: 1}
   area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 1, y: 1, z: 1}
@@ -63,18 +67,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41a9100ed6ae9b44a3d5fb6b690b1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlStatGens: 1
-  spawnTime: 2
+  controlStatGens: 2
+  spawnTime: 1
   energyDrain: 0
   drainTime: 2
   BlackOut: 0
   CapBlackOut: -10
-  Gendown: 0
-  OnGenswood: 100
-  OnGensstone: 100
-  OnGenscopper: 70
-  OnGensiron: 70
-  OnGensgold: 70
+  OnGenswood: 120
+  OnGensstone: 120
+  OnGenscopper: 100
+  OnGensiron: 100
+  OnGensgold: 150
   Breakpoint: 0
   Building: {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
 --- !u!65 &323113668867839416
@@ -96,8 +99,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.64072126, y: 0.27403393, z: 1}
-  m_Center: {x: -0.0057567656, y: 0.07155387, z: 0}
+  m_Size: {x: 0.32938135, y: 0.24546099, z: 1}
+  m_Center: {x: 0.02411139, y: -0.042429775, z: 0}
 --- !u!54 &-2782746334985924120
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -121,10 +124,22 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-3325269038500445306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464363199973811286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990d2e0fc3ca08f4c8924b806d6cf76d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7460262210244628743
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,8 +165,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7460262210244628743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.075, z: 0}
-  m_LocalScale: {x: 0.43785277, y: 0.43785277, z: 0.43785277}
+  m_LocalPosition: {x: -0.085, y: 0.367, z: 0}
+  m_LocalScale: {x: 0.24114506, y: 0.21442121, z: 0.43785277}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 456611246312595613}
@@ -198,12 +213,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cce85e132a43842a09301fd497983f25, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d16e71adf99aa642ae4a4cbe21862a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

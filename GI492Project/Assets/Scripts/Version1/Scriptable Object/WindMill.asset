@@ -19,4 +19,4 @@ MonoBehaviour:
   CostIron: 0
   CostGold: 0
   ReturnENG: 0
-  DeductENG: 0
+  DeductENG: 1

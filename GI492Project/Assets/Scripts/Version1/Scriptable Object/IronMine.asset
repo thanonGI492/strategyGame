@@ -18,4 +18,5 @@ MonoBehaviour:
   CostCopper: 20
   CostIron: 0
   CostGold: 0
-  ReturnENG: 2
+  ReturnENG: 5
+  DeductENG: 0

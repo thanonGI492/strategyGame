@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ public class StatsResource : MonoBehaviour
     [SerializeField] private Text ironText;
     [SerializeField] private Text goldText;
     [SerializeField] private int beginResource;
+    [SerializeField] private int resetResource;
+    [SerializeField] private GameObject floatTextPrefab;
 
     //public variable
     [HideInInspector] public static int TotalEnergy;
@@ -23,6 +26,7 @@ public class StatsResource : MonoBehaviour
     [HideInInspector] public static int TotalIron;
     [HideInInspector] public static int TotalGold;
     [HideInInspector] public bool WaitingPlace;
+    public GameObject FloatTextPrefab => floatTextPrefab;
 
 
     #region Unity Method
@@ -33,8 +37,12 @@ public class StatsResource : MonoBehaviour
 
     private void Start()
     {
+        TotalEnergy = resetResource;
         TotalWood = beginResource;
         TotalStone = beginResource;
+        TotalCopper = resetResource;
+        TotalIron = resetResource;
+        TotalGold = resetResource;
     }
 
     private void Update()
@@ -61,7 +69,7 @@ public class StatsResource : MonoBehaviour
 
         if (TotalWood < cost.CostWood || TotalStone < cost.CostStone || TotalCopper < cost.CostCopper || TotalIron < cost.CostIron)
         {
-            Debug.Log("Insufficient Resource");
+            FloatingText("Insufficient" , " Resource!" , null);
             GridBuildingSystem.Instance.IsSpawningObj = true;
             return;
         }
@@ -72,6 +80,12 @@ public class StatsResource : MonoBehaviour
         TotalGold -= cost.CostGold;
         WaitingPlace = true;
         GridBuildingSystem.Instance.IsSpawningObj = false;
+    }
+
+    public void FloatingText(string changeMessage, string message, Transform parent)
+    {
+        GameObject floatText = Instantiate(floatTextPrefab, transform.position, Quaternion.identity, parent);
+        floatText.GetComponent<TextMeshPro>().text = changeMessage + message;
     }
 
     #endregion

@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class BuildingSystem : MonoBehaviour
 {
     public static BuildingSystem Instance;
-    
+    [SerializeField] private Transform parentTrans;
+    [SerializeField] private Color rightTile;
+    [SerializeField] private Color wrongTile;
 
     public bool Placed {get; private set;}
 
@@ -15,13 +19,19 @@ public class BuildingSystem : MonoBehaviour
     //private Variable
     private Vector3 _offSet;
     private Vector3 _prevPos;
-    private bool _collideObject;
+    private SpriteRenderer _spriteRend;
+    
 
     #region Unity Method
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        _spriteRend = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void OnMouseDown(){
@@ -35,13 +45,15 @@ public class BuildingSystem : MonoBehaviour
         Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + _offSet;
         Vector3Int cellPos = GridBuildingSystem.Instance.GridLayout.LocalToCell(touchPos);
         
-        if (_prevPos != cellPos){
+        if (_prevPos != cellPos)
+        {
                 GridBuildingSystem.Instance.Temp.transform.localPosition = GridBuildingSystem.Instance.GridLayout.CellToLocalInterpolated(cellPos +
                 new Vector3(0.5f, 0.5f, 0f));
 
                 _prevPos = cellPos;
                 GridBuildingSystem.Instance.FollowBuilding();
-            }
+                
+        }
     }
 
     private void OnMouseUp()
@@ -53,24 +65,13 @@ public class BuildingSystem : MonoBehaviour
             GridBuildingSystem.Instance.Temp.Place();
             StatsResource.Instance.WaitingPlace = false;
         }
-    }
-
-    private void Update()
-    {
-        Debug.Log(_collideObject);
-    }
-
-    private void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.GetComponent<BuildingSystem>())
+        else
         {
-            _collideObject = true;
+            if (StatsResource.Instance.FloatTextPrefab)
+            {
+                StatsResource.Instance.FloatingText("Place: ", gameObject.tag, parentTrans);
+            }
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        _collideObject = false;
     }
 
     #endregion
@@ -82,10 +83,11 @@ public class BuildingSystem : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
 
-        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp, gameObject) && !_collideObject){
+        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp, gameObject) && !CheckCollideObject.CollideObject){
+            _spriteRend.color = rightTile;
             return true;
         }
-
+        _spriteRend.color = wrongTile;
         return false;
     }
 

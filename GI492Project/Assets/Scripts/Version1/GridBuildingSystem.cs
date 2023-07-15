@@ -31,6 +31,7 @@ public class GridBuildingSystem : MonoBehaviour
     private void Start(){
         string version = @"Version1\";
         string tilePath = @"Tiles\";
+        
         tileBases.Add(TileType.Empty, null);
         tileBases.Add(TileType.Dirt, Resources.Load<TileBase>(version + tilePath + "dirt"));
         tileBases.Add(TileType.Red, Resources.Load<TileBase>(version + tilePath + "red"));
@@ -70,8 +71,6 @@ public class GridBuildingSystem : MonoBehaviour
             }
             
         }
-        
-        //Debug.Log(IsSpawningObj);
     }
 
     #endregion
@@ -138,27 +137,14 @@ public class GridBuildingSystem : MonoBehaviour
         TileBase[] tileArray = new TileBase[size];
 
         for (int i = 0; i < baseArray.Length; i++) {
-            if (baseArray[i] == tileBases[TileType.Dirt])
+            if (baseArray[i] == tileBases[TileType.Dirt] || baseArray[i] == tileBases[TileType.Hill] || baseArray[i] == tileBases[TileType.Water] || 
+                baseArray[i] == tileBases[TileType.Stone] || baseArray[i] == tileBases[TileType.Forest] || baseArray[i] == tileBases[TileType.Copper] ||
+                baseArray[i] == tileBases[TileType.Iron] || baseArray[i] == tileBases[TileType.Gold])
             {
-                tileArray[i] = tileBases[TileType.Dirt];
+                tileArray[i] = tileBases[TileType.Default];
             }
-            else if (baseArray[i] == tileBases[TileType.Forest])
+            else
             {
-                tileArray[i] = tileBases[TileType.Forest];
-            }
-            else if (baseArray[i] == tileBases[TileType.Stone])
-            {
-                tileArray[i] = tileBases[TileType.Stone];
-            }
-            else if (baseArray[i] == tileBases[TileType.Copper])
-            {
-                tileArray[i] = tileBases[TileType.Copper];
-            }
-            else if (baseArray[i] == tileBases[TileType.Iron])
-            {
-                tileArray[i] = tileBases[TileType.Iron];
-            }
-            else{
                 FillTiles(tileArray, TileType.Red);
                 break;
             }
@@ -189,8 +175,9 @@ public class GridBuildingSystem : MonoBehaviour
 
         foreach (var b in baseArray)
         {
-            if (b != tileBases[TileType.Water] && b != tileBases[TileType.Hill])
+            if (b != tileBases[TileType.Water] && b != tileBases[TileType.Hill] && b != tileBases[TileType.Dirt])
             {
+                SetTilesBlock(area, TileType.Empty, mainTilemap);
                 SetTilesBlock(area, TileType.Default, mainTilemap);
             }
         }
