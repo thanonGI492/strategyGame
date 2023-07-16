@@ -193,6 +193,9 @@ public class GridBuildingSystem : MonoBehaviour
 public enum TileType{
     Empty,
     Dirt,
+    Dirt2,
+    Dirt3,
+    Dirt4,
     Forest,
     Red,
     Water,

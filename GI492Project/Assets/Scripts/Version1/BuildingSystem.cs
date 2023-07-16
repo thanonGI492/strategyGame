@@ -79,7 +79,8 @@ public class BuildingSystem : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
 
-        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp) && !CheckCollideObject.CollideObject && !GridBuildingSystem.Instance.IsAlreadyOccupied){
+        if (GridBuildingSystem.Instance.CanTakeArea(areaTemp) && !CheckCollideObject.CollideObject && !GridBuildingSystem.Instance.IsAlreadyOccupied)
+        {
             _spriteRend.color = rightTile;
             return true;
         }

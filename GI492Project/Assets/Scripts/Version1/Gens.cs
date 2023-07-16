@@ -10,8 +10,10 @@ public class Gens : MonoBehaviour
     [SerializeField] private int spawnTime;
     [SerializeField] private int energyDrain;
     [SerializeField] private int drainTime;
-    [SerializeField] private int BlackOut = 1;
+    [SerializeField] private int BlackOut;
     [SerializeField] private int CapBlackOut = -10;
+    [SerializeField] private Color greyColor;
+    [SerializeField] private Color defaultColor;
 
     [Header("OnGens")] 
     public int OnGenswood = 0;
@@ -24,10 +26,16 @@ public class Gens : MonoBehaviour
     //private variable
     private int _baseLv = 1;
     private bool _placed;
+    private SpriteRenderer _spriteRend;
     //public variable
     public CostBuilding Building;
 
     #region Unity Method
+
+    private void Awake()
+    {
+        _spriteRend = GetComponentInChildren<SpriteRenderer>();
+    }
 
     private void OnMouseUp()
     {
@@ -91,14 +99,21 @@ public class Gens : MonoBehaviour
         yield return new WaitForSeconds(spawnTime);
         if (StatsResource.TotalEnergy > BlackOut)
         {
-             StatsResource.TotalWood += (int)(_baseLv * controlStatGens);
+            _spriteRend.color = defaultColor;
+            StatsResource.TotalWood += (int)(_baseLv * controlStatGens);
              OnGenswood -= (int)(_baseLv * controlStatGens);
 
              if (OnGenswood == Breakpoint)
              {
-                 yield break;
+                _spriteRend.color = greyColor;
+                yield break;
              }
         }
+        else
+        {
+            _spriteRend.color = greyColor;
+        }
+        
         StartCoroutine(woodGen());
         
     }
@@ -108,13 +123,19 @@ public class Gens : MonoBehaviour
         yield return new WaitForSeconds(spawnTime);
         if (StatsResource.TotalEnergy > BlackOut)
         {
+            _spriteRend.color = defaultColor;
             StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
             OnGensstone -= (int)(_baseLv * controlStatGens);
 
             if (OnGensstone == Breakpoint)
             {
+                _spriteRend.color = greyColor;
                 yield break;
             }
+        }
+        else
+        {
+            _spriteRend.color = greyColor;
         }
         StartCoroutine(stoneGen());
     }
@@ -124,13 +145,19 @@ public class Gens : MonoBehaviour
         yield return new WaitForSeconds(spawnTime);
         if (StatsResource.TotalEnergy > BlackOut)
         {
+            _spriteRend.color = defaultColor;
             StatsResource.TotalCopper += (int)(_baseLv * controlStatGens);
             OnGenscopper -= (int)(_baseLv * controlStatGens);
 
             if (OnGenscopper == Breakpoint)
             {
+                _spriteRend.color = greyColor;
                 yield break;
             }
+        }
+        else
+        {
+            _spriteRend.color = greyColor;
         }
         StartCoroutine(copperGen());
     }
@@ -140,15 +167,20 @@ public class Gens : MonoBehaviour
         yield return new WaitForSeconds(spawnTime);
         if (StatsResource.TotalEnergy > BlackOut)
         {
+            _spriteRend.color = defaultColor;
             StatsResource.TotalIron += (int)(_baseLv * controlStatGens);
             OnGensiron -= (int)(_baseLv * controlStatGens);
 
             if (OnGensiron == Breakpoint)
             {
+                _spriteRend.color = greyColor;
                 yield break;
             }
         }
-       
+        else
+        {
+            _spriteRend.color = greyColor;
+        }
         StartCoroutine(ironGen());
     }
 
@@ -157,13 +189,19 @@ public class Gens : MonoBehaviour
         yield return new WaitForSeconds(spawnTime);
         if (StatsResource.TotalEnergy > BlackOut)
         {
+            _spriteRend.color = defaultColor;
             StatsResource.TotalGold += (int)(_baseLv * controlStatGens);
             OnGensgold -= (int)(_baseLv * controlStatGens);
 
             if (OnGensgold == Breakpoint)
             {
+                _spriteRend.color = greyColor;
                 yield break;
             }
+        }
+        else
+        {
+            _spriteRend.color = greyColor;
         }
         StartCoroutine(goldGen());
     }
