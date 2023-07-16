@@ -35,6 +35,9 @@ public class GridBuildingSystem : MonoBehaviour
         
         tileBases.Add(TileType.Empty, null);
         tileBases.Add(TileType.Dirt, Resources.Load<TileBase>(version + tilePath + "dirt"));
+        tileBases.Add(TileType.Dirt2, Resources.Load<TileBase>(version + tilePath + "dirt2"));
+        tileBases.Add(TileType.Dirt3, Resources.Load<TileBase>(version + tilePath + "dirt3"));
+        tileBases.Add(TileType.Dirt4, Resources.Load<TileBase>(version + tilePath + "dirt4"));
         tileBases.Add(TileType.Red, Resources.Load<TileBase>(version + tilePath + "red"));
         tileBases.Add(TileType.Forest, Resources.Load<TileBase>(version + tilePath + "forest"));
         tileBases.Add(TileType.Water, Resources.Load<TileBase>(version + tilePath + "water"));
@@ -138,10 +141,12 @@ public class GridBuildingSystem : MonoBehaviour
         TileBase[] tileArray = new TileBase[size];
 
         for (int i = 0; i < baseArray.Length; i++) {
-            if (baseArray[i] == tileBases[TileType.Dirt] && gameObject.CompareTag("OnDirt")|| baseArray[i] == tileBases[TileType.Hill] && gameObject.CompareTag("OnHill")|| 
-                baseArray[i] == tileBases[TileType.Water] && gameObject.CompareTag("OnWater") || baseArray[i] == tileBases[TileType.Stone] && gameObject.CompareTag("OnStone")|| 
-                baseArray[i] == tileBases[TileType.Forest] && gameObject.CompareTag("OnForest") || baseArray[i] == tileBases[TileType.Copper] && gameObject.CompareTag("OnCopper") || 
-                baseArray[i] == tileBases[TileType.Iron] && gameObject.CompareTag("OnIron") || baseArray[i] == tileBases[TileType.Gold] && gameObject.CompareTag("OnGold"))
+            if (baseArray[i] == tileBases[TileType.Dirt] && gameObject.CompareTag("OnDirt") || baseArray[i] == tileBases[TileType.Dirt2] && gameObject.CompareTag("OnDirt") || 
+                baseArray[i] == tileBases[TileType.Dirt3] && gameObject.CompareTag("OnDirt") || baseArray[i] == tileBases[TileType.Dirt4] && gameObject.CompareTag("OnDirt") || 
+                baseArray[i] == tileBases[TileType.Hill] && gameObject.CompareTag("OnHill")|| baseArray[i] == tileBases[TileType.Water] && gameObject.CompareTag("OnWater") || 
+                baseArray[i] == tileBases[TileType.Stone] && gameObject.CompareTag("OnStone")|| baseArray[i] == tileBases[TileType.Forest] && gameObject.CompareTag("OnForest") || 
+                baseArray[i] == tileBases[TileType.Copper] && gameObject.CompareTag("OnCopper") || baseArray[i] == tileBases[TileType.Iron] && gameObject.CompareTag("OnIron") || 
+                baseArray[i] == tileBases[TileType.Gold] && gameObject.CompareTag("OnGold"))
             {
                 IsAlreadyOccupied = false;
                 tileArray[i] = tileBases[TileType.Default];
@@ -164,7 +169,9 @@ public class GridBuildingSystem : MonoBehaviour
             if ((b == tileBases[TileType.Dirt]) || (b == tileBases[TileType.Forest]) ||
                 (b == tileBases[TileType.Hill]) || (b == tileBases[TileType.Stone]) ||
                 (b == tileBases[TileType.Copper]) || (b == tileBases[TileType.Iron]) ||
-                (b == tileBases[TileType.Water]) || (b == tileBases[TileType.Gold]))
+                (b == tileBases[TileType.Water]) || (b == tileBases[TileType.Gold]) ||
+                (b == tileBases[TileType.Dirt2]) || (b == tileBases[TileType.Dirt3]) ||
+                (b == tileBases[TileType.Dirt4]))
             {
                 return true;
             } 
@@ -178,7 +185,8 @@ public class GridBuildingSystem : MonoBehaviour
 
         foreach (var b in baseArray)
         {
-            if (b != tileBases[TileType.Water] && b != tileBases[TileType.Hill] && b != tileBases[TileType.Dirt])
+            if (b != tileBases[TileType.Water] && b != tileBases[TileType.Hill] && b != tileBases[TileType.Dirt] && b != tileBases[TileType.Dirt2] 
+                && b != tileBases[TileType.Dirt3] && b != tileBases[TileType.Dirt4])
             {
                 SetTilesBlock(area, TileType.Empty, mainTilemap);
                 SetTilesBlock(area, TileType.Default, mainTilemap);
