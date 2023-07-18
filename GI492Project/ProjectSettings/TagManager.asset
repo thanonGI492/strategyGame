@@ -12,6 +12,7 @@ TagManager:
   - OnIron
   - OnGold
   - OnHill
+  - FloatText
   layers:
   - Default
   - TransparentFX

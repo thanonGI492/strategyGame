@@ -5,77 +5,46 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class OnClick : MonoBehaviour
-{
-    
-    private Camera camera;
-    public GameObject _destroyBotton;
-    private GameObject _ourGameObj;
-    public float _waitTime;
-    public CostBuilding[] _Buildings;
-    
-    // Start is called before the first frame update
-    void Start()
+{ 
+    [SerializeField] private GameObject destroyBtn;
+    public GameObject DestroyBtn => destroyBtn;
+
+    //private variable
+    private Gens _gens;
+
+    private void Awake()
     {
-        camera = Camera.main;
-        _destroyBotton.SetActive(false);
+        _gens = GetComponent<Gens>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        DetectObjectWithRaycast();
-
-       
+        destroyBtn.SetActive(false);
     }
 
-    public void DetectObjectWithRaycast()
+    private void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!BuildingSystem.Instance.Placed)
         {
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit) || _destroyBotton == false)
-            {
-                _ourGameObj = hit.collider.gameObject;
-                Debug.Log ("object that was hit: " + _ourGameObj);
-                if (_ourGameObj.GetComponent<BuildingSystem>().Placed)
-                {
-                    _destroyBotton.SetActive(true);
-                }
-                
-            }
-            else
-            {
-                StartCoroutine(onOpen());
-            }
-            
-            
+            return;
         }
+
+        destroyBtn.SetActive(true);
     }
 
-    public void DestroyST()
+    private void OnMouseExit()
     {
-        foreach (var B in _Buildings)
+        if (MouseHoverDestroyBtn.IsHovering)
         {
-            if (B.NameBuilding == _ourGameObj.GetComponent<Gens>().Building.NameBuilding)
-            {
-                StatsResource.TotalEnergy += B.ReturnENG;
-                StatsResource.TotalEnergy -= B.DeductENG;
-                Debug.Log(_ourGameObj.GetComponent<Gens>().Building.NameBuilding);
-            }
-            
+            return;
         }
-        
-        Destroy(_ourGameObj);
-        _destroyBotton.SetActive(false);
+        destroyBtn.SetActive(false);
     }
 
-    public IEnumerator onOpen()
+    public void OnButtonClick()
     {
-        yield return new WaitForSeconds(_waitTime);
-        _destroyBotton.SetActive(false);
+        StatsResource.TotalEnergy += _gens.Building.ReturnENG;
+        StatsResource.TotalEnergy -= _gens.Building.DeductENG;
+        Destroy(gameObject);
     }
-
-    
 }
