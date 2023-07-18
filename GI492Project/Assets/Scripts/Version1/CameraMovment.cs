@@ -10,6 +10,9 @@ public class CameraMovment : MonoBehaviour
     public float CameraSpeed;
     public int rapid;
 
+    [Header("Move Bounds")]
+    public Vector2 minBounds, maxBounds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,5 +43,17 @@ public class CameraMovment : MonoBehaviour
         }
 
         this.transform.position = CameraPosition;
+        LockPositionInBounds();
+    }
+
+    private void LockPositionInBounds()
+    {
+        transform.position = new Vector4
+        (
+            Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x),
+            Mathf.Clamp(transform.position.y, minBounds.y, maxBounds.y),
+            transform.position.z
+            
+        );
     }
 }
