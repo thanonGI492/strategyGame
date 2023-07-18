@@ -5,8 +5,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class OnClick : MonoBehaviour
-{
+{ 
     [SerializeField] private GameObject destroyBtn;
+    public GameObject DestroyBtn => destroyBtn;
 
     //private variable
     private Gens _gens;
@@ -21,14 +22,6 @@ public class OnClick : MonoBehaviour
         destroyBtn.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (MouseHoverDestroyBtn.IsHovering)
-        {
-            destroyBtn.SetActive(true);
-        }
-    }
-
     private void OnMouseDown()
     {
         if (!BuildingSystem.Instance.Placed)
@@ -41,6 +34,10 @@ public class OnClick : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if (MouseHoverDestroyBtn.IsHovering)
+        {
+            return;
+        }
         destroyBtn.SetActive(false);
     }
 
@@ -48,7 +45,6 @@ public class OnClick : MonoBehaviour
     {
         StatsResource.TotalEnergy += _gens.Building.ReturnENG;
         StatsResource.TotalEnergy -= _gens.Building.DeductENG;
-        MouseHoverDestroyBtn.IsHovering = false;
         Destroy(gameObject);
     }
 }

@@ -9,6 +9,8 @@ public class ShowInfoHover : MonoBehaviour
     [SerializeField] private GameObject uiHolder;
     [SerializeField] private TMP_Text infoText;
 
+    public GameObject UIHolder => uiHolder;
+
     //private variable
     private Gens objectRefernce;
     private bool _mouseExit;
@@ -21,14 +23,6 @@ public class ShowInfoHover : MonoBehaviour
     private void Start()
     {
         uiHolder.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (MouseHoverDestroyBtn.IsHovering)
-        {
-            uiHolder.SetActive(true);
-        }
     }
 
     private void OnMouseOver()
@@ -68,6 +62,10 @@ public class ShowInfoHover : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if (MouseHoverDestroyBtn.IsHovering)
+        {
+            return;
+        }
         uiHolder.SetActive(false);
     }
 }
