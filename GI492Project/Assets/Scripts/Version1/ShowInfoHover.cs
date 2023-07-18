@@ -25,11 +25,10 @@ public class ShowInfoHover : MonoBehaviour
 
     private void Update()
     {
-        if (!_mouseExit)
+        if (MouseHoverDestroyBtn.IsHovering)
         {
-            return;
+            uiHolder.SetActive(true);
         }
-        uiHolder.SetActive(false);
     }
 
     private void OnMouseOver()
@@ -69,10 +68,6 @@ public class ShowInfoHover : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (MouseHoverDestroyBtn.IsHovering)
-        {
-            return;
-        }
-        _mouseExit = true;
+        uiHolder.SetActive(false);
     }
 }
