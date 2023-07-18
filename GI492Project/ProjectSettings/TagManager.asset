@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - OnDirt
+  - OnWater
+  - OnForest
+  - OnStone
+  - OnCopper
+  - OnIron
+  - OnGold
+  - OnHill
   layers:
   - Default
   - TransparentFX
@@ -38,6 +46,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1985574041
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
