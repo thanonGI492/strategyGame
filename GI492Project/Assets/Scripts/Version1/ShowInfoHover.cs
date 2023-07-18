@@ -11,6 +11,7 @@ public class ShowInfoHover : MonoBehaviour
 
     //private variable
     private Gens objectRefernce;
+    private bool _mouseExit;
 
     private void Awake()
     {
@@ -19,6 +20,15 @@ public class ShowInfoHover : MonoBehaviour
 
     private void Start()
     {
+        uiHolder.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (!_mouseExit)
+        {
+            return;
+        }
         uiHolder.SetActive(false);
     }
 
@@ -59,6 +69,10 @@ public class ShowInfoHover : MonoBehaviour
 
     private void OnMouseExit()
     {
-        uiHolder.SetActive(false);
+        if (MouseHoverDestroyBtn.IsHovering)
+        {
+            return;
+        }
+        _mouseExit = true;
     }
 }
