@@ -43,8 +43,13 @@ public class OnClick : MonoBehaviour
 
     public void OnButtonClick()
     {
+        if (!_gens.IsWork)
+        {
+            StatsResource.TotalEnergy += _gens.Building.DeductENG;
+        }
         StatsResource.TotalEnergy += _gens.Building.ReturnENG;
         StatsResource.TotalEnergy -= _gens.Building.DeductENG;
+        
         Destroy(gameObject);
     }
 }
