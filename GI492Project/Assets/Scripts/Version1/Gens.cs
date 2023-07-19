@@ -29,6 +29,7 @@ public class Gens : MonoBehaviour
     private SpriteRenderer _spriteRend;
     //public variable
     public CostBuilding Building;
+    public bool IsWork;
 
     #region Unity Method
 
@@ -213,12 +214,16 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalWood > Breakpoint) 
         {
             StatsResource.TotalWood -= (int)(_baseLv * controlStatGens);
-
+            IsWork = true;
             if (StatsResource.TotalWood <= Breakpoint)
             {
                 StatsResource.TotalWood = Breakpoint;
+                StatsResource.TotalEnergy -= Building.DeductENG;
+                IsWork = false;
+                Debug.Log("Thermal" + IsWork);
                 yield break;
             }
+            
         }
         StartCoroutine(thermalGen());
     }
