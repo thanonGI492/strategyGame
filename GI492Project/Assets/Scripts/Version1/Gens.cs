@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class Gens : MonoBehaviour
     private int _baseLv = 1;
     private bool _placed;
     private SpriteRenderer _spriteRend;
+    private bool _isOut;
     //public variable
     public CostBuilding Building;
     public bool IsWork;
@@ -36,7 +38,10 @@ public class Gens : MonoBehaviour
     private void Awake()
     {
         _spriteRend = GetComponentInChildren<SpriteRenderer>();
+        _isOut = false;
     }
+
+    
 
     private void OnMouseUp()
     {
@@ -92,7 +97,7 @@ public class Gens : MonoBehaviour
     IEnumerator energyGen()
     {
         yield return new WaitForSeconds(spawnTime);
-        StatsResource.TotalEnergy += (int)(_baseLv * controlStatGens);
+        StatsResource.TotalEnergy += (int)(_baseLv * Building.DeductENG);
     }
 
     IEnumerator woodGen()
@@ -207,24 +212,45 @@ public class Gens : MonoBehaviour
         StartCoroutine(goldGen());
     }
 
-    IEnumerator thermalGen()
+    public IEnumerator thermalGen()
     {
-        yield return new WaitForSeconds(spawnTime);
+        yield return new WaitForSeconds(drainTime);
         
-        if (StatsResource.TotalWood > Breakpoint) 
+        if (StatsResource.TotalWood > Breakpoint )
         {
-            StatsResource.TotalWood -= (int)(_baseLv * controlStatGens);
-            IsWork = true;
-            if (StatsResource.TotalWood <= Breakpoint)
+            if (_isOut)
+            {
+                StatsResource.TotalEnergy += Building.DeductENG;
+                _isOut = false;
+            }
+            else
+            {
+                
+                _spriteRend.color = defaultColor;
+                StatsResource.TotalWood -= (int)(_baseLv * controlStatGens);
+                if (StatsResource.TotalWood <= Breakpoint)
+                {
+                    StatsResource.TotalWood = Breakpoint;
+                }
+                IsWork = true;
+                Debug.Log("Thermal" + IsWork);
+            }
+            
+            
+        }
+        else
+        {
+            _spriteRend.color = greyColor;
+            if (StatsResource.TotalWood <= Breakpoint && !_isOut)
             {
                 StatsResource.TotalWood = Breakpoint;
                 StatsResource.TotalEnergy -= Building.DeductENG;
                 IsWork = false;
+                _isOut = true;
                 Debug.Log("Thermal" + IsWork);
-                yield break;
             }
-            
         }
+       
         StartCoroutine(thermalGen());
     }
 
