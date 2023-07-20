@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameBuilding: Hydroelectricplant
   CostWood: 0
-  CostStone: 15
+  CostStone: 10
   CostCopper: 10
   CostIron: 5
   CostGold: 0
   ReturnENG: 0
   DeductENG: 5
+  DrainResource: 0

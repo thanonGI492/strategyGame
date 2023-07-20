@@ -19,4 +19,5 @@ MonoBehaviour:
   CostIron: 5
   CostGold: 0
   ReturnENG: 0
-  DeductENG: 4
+  DeductENG: 3
+  DrainResource: 0

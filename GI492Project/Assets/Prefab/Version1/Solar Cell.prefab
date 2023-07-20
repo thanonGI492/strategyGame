@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41a9100ed6ae9b44a3d5fb6b690b1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlStatGens: 4
+  controlStatGens: 3
   spawnTime: 1
   energyDrain: 0
   drainTime: 2
