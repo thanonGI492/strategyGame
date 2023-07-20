@@ -56,7 +56,7 @@ MonoBehaviour:
   wrongTile: {r: 1, g: 0, b: 0, a: 1}
   area:
     m_Position: {x: 0, y: 0, z: 0}
-    m_Size: {x: 1, y: 1, z: 1}
+    m_Size: {x: 2, y: 2, z: 1}
 --- !u!114 &-7870873669150989174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +84,7 @@ MonoBehaviour:
   OnGensgold: 150
   Breakpoint: 0
   Building: {fileID: 11400000, guid: 58473b10f667d324b94332dc045767c4, type: 2}
+  IsWork: 0
 --- !u!65 &323113668867839416
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -103,8 +104,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8596599, y: 0.71758014, z: 1}
-  m_Center: {x: -0.015231952, y: 0.11152211, z: 0}
+  m_Size: {x: 1.2964783, y: 0.7343809, z: 1}
+  m_Center: {x: 0.026769757, y: 0.26272842, z: 0}
 --- !u!54 &-2782746334985924120
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -771,8 +772,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7460262210244628743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.101, z: 0}
-  m_LocalScale: {x: 0.0960722, y: 0.0786497, z: 0.43785277}
+  m_LocalPosition: {x: 0.086, y: 0.419, z: 0}
+  m_LocalScale: {x: 0.1301068, y: 0.106512204, z: 0.59296685}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 456611246312595613}
@@ -864,7 +865,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.934}
+  m_AnchoredPosition: {x: 0, y: -1.673}
   m_SizeDelta: {x: 2.3973, y: 0.4988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8618158069924900872
