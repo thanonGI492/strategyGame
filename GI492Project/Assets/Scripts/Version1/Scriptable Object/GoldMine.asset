@@ -18,4 +18,6 @@ MonoBehaviour:
   CostCopper: 20
   CostIron: 20
   CostGold: 0
-  ReturnENG: 2
+  ReturnENG: 10
+  DeductENG: 0
+  DrainResource: 0

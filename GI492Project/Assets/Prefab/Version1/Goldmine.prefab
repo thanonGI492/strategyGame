@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0069999695, y: -0.35099995}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3961312033073165115
@@ -206,13 +206,14 @@ MonoBehaviour:
   CapBlackOut: -10
   greyColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  OnGenswood: 120
-  OnGensstone: 120
-  OnGenscopper: 100
-  OnGensiron: 100
-  OnGensgold: 150
+  OnGenswood: 70
+  OnGensstone: 50
+  OnGenscopper: 60
+  OnGensiron: 70
+  OnGensgold: 34
   Breakpoint: 0
   Building: {fileID: 11400000, guid: 07fa3ac5d216f3b4883da1045dc1ec2b, type: 2}
+  IsWork: 0
 --- !u!54 &-7977774646202972950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -460,7 +461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.934}
+  m_AnchoredPosition: {x: 0, y: -1.832}
   m_SizeDelta: {x: 2.3973, y: 0.4988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4394570886904281487
@@ -577,7 +578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0069999695, y: -0.35099995}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6015414663049922832

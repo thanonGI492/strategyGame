@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Thermal  Plant
   m_EditorClassIdentifier: 
   NameBuilding: Thermalplant
-  CostWood: 20
-  CostStone: 20
+  CostWood: 5
+  CostStone: 5
   CostCopper: 0
   CostIron: 0
   CostGold: 0
   ReturnENG: 0
   DeductENG: 3
-  DrainResource: 3
+  DrainResource: 1

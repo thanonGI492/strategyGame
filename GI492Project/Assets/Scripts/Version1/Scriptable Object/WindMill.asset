@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: WindMill
   m_EditorClassIdentifier: 
   NameBuilding: Windmill
-  CostWood: 5
+  CostWood: 10
   CostStone: 5
   CostCopper: 0
   CostIron: 0
   CostGold: 0
   ReturnENG: 0
-  DeductENG: 2
+  DeductENG: 1
   DrainResource: 0

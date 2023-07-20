@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41a9100ed6ae9b44a3d5fb6b690b1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlStatGens: 2
+  controlStatGens: 1
   spawnTime: 1
   energyDrain: 0
   drainTime: 2
@@ -214,11 +214,11 @@ MonoBehaviour:
   CapBlackOut: -10
   greyColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  OnGenswood: 120
-  OnGensstone: 120
-  OnGenscopper: 100
-  OnGensiron: 100
-  OnGensgold: 150
+  OnGenswood: 70
+  OnGensstone: 50
+  OnGenscopper: 60
+  OnGensiron: 70
+  OnGensgold: 34
   Breakpoint: 0
   Building: {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
   IsWork: 1

@@ -190,11 +190,11 @@ MonoBehaviour:
   CapBlackOut: -10
   greyColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  OnGenswood: 120
-  OnGensstone: 120
-  OnGenscopper: 100
-  OnGensiron: 100
-  OnGensgold: 150
+  OnGenswood: 70
+  OnGensstone: 50
+  OnGenscopper: 60
+  OnGensiron: 70
+  OnGensgold: 34
   Breakpoint: 0
   Building: {fileID: 11400000, guid: d0e8ccd7473105b47a08265430e562b8, type: 2}
   IsWork: 1
@@ -217,8 +217,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.44243, y: 2.5743792, z: 1}
-  m_Center: {x: 0.02030754, y: 1.1445125, z: 0}
+  m_Size: {x: 1.8010925, y: 1.7727078, z: 1}
+  m_Center: {x: 0.0034301877, y: 1.0221517, z: 0}
 --- !u!54 &-2782746334985924120
 Rigidbody:
   m_ObjectHideFlags: 0
