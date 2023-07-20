@@ -84,7 +84,7 @@ MonoBehaviour:
   OnGensgold: 150
   Breakpoint: 0
   Building: {fileID: 11400000, guid: 96e63830001514949b395e59ae3a8c23, type: 2}
-  IsWork: 0
+  IsWork: 1
 --- !u!65 &323113668867839416
 BoxCollider:
   m_ObjectHideFlags: 0
