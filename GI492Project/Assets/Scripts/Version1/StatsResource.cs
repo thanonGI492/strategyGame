@@ -69,7 +69,7 @@ public class StatsResource : MonoBehaviour
 
         if (TotalWood < cost.CostWood || TotalStone < cost.CostStone || TotalCopper < cost.CostCopper || TotalIron < cost.CostIron)
         {
-            FloatingText("Insufficient" , " Resource!");
+            FloatingText("Not Enough " , " Resource!");
             GridBuildingSystem.Instance.IsSpawningObj = true;
             return;
         }

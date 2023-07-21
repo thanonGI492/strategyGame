@@ -10,9 +10,6 @@ public class CompleteTier : MonoBehaviour
     public int Q_copper;
     public int Q_iron;
     public int Q_gold;
-    public int TotalCopper22;
-    public int TotalIron22;
-    public int TotalGold22;
 
     public GameObject quest;
     public GameObject Q_tier1;
@@ -36,52 +33,44 @@ public class CompleteTier : MonoBehaviour
         Q_tier3.SetActive(false);
     }
 
-   
-    void Update()
-    {
-        TotalCopper22 += StatsResource.TotalCopper;
-        TotalIron22 += StatsResource.TotalIron;
-        TotalGold22 += StatsResource.TotalGold;
-    }
-    
     public void Tier1()
-    { 
-       
-        if(TotalCopper22 >= Q_copper)
+    {
+        if(StatsResource.TotalCopper < Q_copper)
         {
-          StatsResource.TotalCopper -= Q_copper;
-          check1.SetActive(true);
-          complete1.enabled = false;
-          Q_tier2.SetActive(true);
+            StatsResource.Instance.FloatingText("Not Enough ","Resources");
+            return;
         }
+        StatsResource.TotalCopper -= Q_copper;
+        check1.SetActive(true);
+        complete1.enabled = false;
+        Q_tier2.SetActive(true);
     }
 
     public void Tier2()
     {
-        
-        if(TotalIron22 >= Q_iron)
+        if(StatsResource.TotalIron < Q_iron)
         {
-          
-          StatsResource.TotalIron -= Q_iron;  
-          check2.SetActive(true);
-          complete2.enabled = false;
-          Q_tier3.SetActive(true);
-
+            StatsResource.Instance.FloatingText("Not Enough ","Resources");
+            return;
         }
+        StatsResource.TotalIron -= Q_iron;  
+        check2.SetActive(true);
+        complete2.enabled = false;
+        Q_tier3.SetActive(true);
     }
 
     public void Tier3()
     {
         
-        if(TotalGold22 >= Q_gold)
+        if(StatsResource.TotalGold < Q_gold)
         {
-          
-          StatsResource.TotalGold -= Q_gold;
-          check3.SetActive(true);
-          SceneManager.LoadScene(sceneName);
-          complete3.enabled = false;
-
+            StatsResource.Instance.FloatingText("Not Enough ","Resources");
+            return;
         }
+        StatsResource.TotalGold -= Q_gold;
+        check3.SetActive(true);
+        SceneManager.LoadScene(sceneName);
+        complete3.enabled = false;
 
     }
 }

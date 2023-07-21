@@ -12978,9 +12978,6 @@ MonoBehaviour:
   Q_copper: 30
   Q_iron: 50
   Q_gold: 100
-  TotalCopper22: 0
-  TotalIron22: 0
-  TotalGold22: 0
   quest: {fileID: 2092018238}
   Q_tier1: {fileID: 1032644650}
   Q_tier2: {fileID: 2070639641}
