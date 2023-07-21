@@ -33,19 +33,19 @@ public class GridBuildingSystem : MonoBehaviour
     private void Start() {
         foreach (var t in tileBases.Keys)
         {
-            if (t.Equals(TileType.Empty) || t.Equals(TileType.Dirt) || t.Equals(TileType.Dirt2) || 
-                t.Equals(TileType.Dirt3) || t.Equals(TileType.Dirt4) || t.Equals(TileType.Red) || 
+            if (t.Equals(TileType.Empty) || t.Equals(TileType.Dirt) || t.Equals(TileType.Dirt2) ||
+                t.Equals(TileType.Dirt3) || t.Equals(TileType.Dirt4) || t.Equals(TileType.Red) ||
                 t.Equals(TileType.Forest) || t.Equals(TileType.Forest2) || t.Equals(TileType.Water) ||
-                t.Equals(TileType.Copper) || t.Equals(TileType.Iron) || t.Equals(TileType.Gold) || 
+                t.Equals(TileType.Copper) || t.Equals(TileType.Iron) || t.Equals(TileType.Gold) ||
                 t.Equals(TileType.Hill) || t.Equals(TileType.Hill2) || t.Equals(TileType.Stone) ||
-                t.Equals(TileType.Stone2) || t.Equals(TileType.Default))
+                t.Equals(TileType.Stone2) || t.Equals(TileType.TreeDestroy) || t.Equals(TileType.StoneDestroy))
             {
                 return;
             }
         }
         string version = @"Version1\";
         string tilePath = @"Tiles\";
-        
+
         tileBases.Add(TileType.Empty, null);
         tileBases.Add(TileType.Dirt, Resources.Load<TileBase>(version + tilePath + "dirt"));
         tileBases.Add(TileType.Dirt2, Resources.Load<TileBase>(version + tilePath + "dirt2"));
@@ -62,7 +62,11 @@ public class GridBuildingSystem : MonoBehaviour
         tileBases.Add(TileType.Hill2, Resources.Load<TileBase>(version + tilePath + "hill2"));
         tileBases.Add(TileType.Stone, Resources.Load<TileBase>(version + tilePath + "stone"));
         tileBases.Add(TileType.Stone2, Resources.Load<TileBase>(version + tilePath + "stone2"));
-        tileBases.Add(TileType.Default, Resources.Load<TileBase>(version + tilePath + "default"));
+        tileBases.Add(TileType.TreeDestroy, Resources.Load<TileBase>(version + tilePath + "treeDestroy"));
+        tileBases.Add(TileType.StoneDestroy, Resources.Load<TileBase>(version + tilePath + "StoneDestroy"));
+        tileBases.Add(TileType.CopperDestroy, Resources.Load<TileBase>(version + tilePath + "copperDestroy"));
+        tileBases.Add(TileType.IronDestroy, Resources.Load<TileBase>(version + tilePath + "ironDestroy"));
+        tileBases.Add(TileType.GoldDestroy, Resources.Load<TileBase>(version + tilePath + "goldDestroy"));
     }
 
     private void Update(){
@@ -164,7 +168,7 @@ public class GridBuildingSystem : MonoBehaviour
                 baseArray[i] == tileBases[TileType.Stone2] && gameObject.CompareTag("OnStone") || baseArray[i] == tileBases[TileType.Hill2] && gameObject.CompareTag("OnHill"))
             {
                 IsAlreadyOccupied = false;
-                tileArray[i] = tileBases[TileType.Default];
+                tileArray[i] = tileBases[TileType.TreeDestroy];
             }
             else
             {
@@ -198,14 +202,36 @@ public class GridBuildingSystem : MonoBehaviour
     public void TakeArea(BoundsInt area) {
         SetTilesBlock(area, TileType.Empty, tempTilemap);
         TileBase[] baseArray = GetTilesBlock(area, mainTilemap);
-
+        
         foreach (var b in baseArray)
         {
-            if (b != tileBases[TileType.Water] && b != tileBases[TileType.Hill] && b != tileBases[TileType.Dirt] && b != tileBases[TileType.Dirt2] 
-                && b != tileBases[TileType.Dirt3] && b != tileBases[TileType.Dirt4] && b != tileBases[TileType.Hill2])
+            if (b == tileBases[TileType.Dirt] || b == tileBases[TileType.Dirt2] || b == tileBases[TileType.Dirt3] ||
+                b == tileBases[TileType.Dirt4] || b == tileBases[TileType.Hill] || b == tileBases[TileType.Hill2] || 
+                b == tileBases[TileType.Water])
             {
-                SetTilesBlock(area, TileType.Empty, mainTilemap);
-                SetTilesBlock(area, TileType.Default, mainTilemap);
+                return;
+            }
+            SetTilesBlock(area, TileType.Empty, mainTilemap);
+
+            if (b == tileBases[TileType.Forest] || b == tileBases[TileType.Forest2])
+            {
+                SetTilesBlock(area, TileType.TreeDestroy, mainTilemap);
+            }
+            else if (b == tileBases[TileType.Stone] || b == tileBases[TileType.Stone2])
+            {
+                SetTilesBlock(area, TileType.StoneDestroy, mainTilemap);
+            }
+            else if (b == tileBases[TileType.Copper])
+            {
+                SetTilesBlock(area, TileType.CopperDestroy, mainTilemap);
+            }
+            else if (b == tileBases[TileType.Iron])
+            {
+                SetTilesBlock(area, TileType.IronDestroy, mainTilemap);
+            }
+            else if (b == tileBases[TileType.Gold])
+            {
+                SetTilesBlock(area, TileType.GoldDestroy, mainTilemap);
             }
         }
     }
@@ -231,5 +257,9 @@ public enum TileType{
     Hill2,
     Stone,
     Stone2,
-    Default
+    TreeDestroy,
+    StoneDestroy,
+    CopperDestroy,
+    IronDestroy,
+    GoldDestroy
 }

@@ -7,22 +7,22 @@ using UnityEngine.SceneManagement;
 public class CompleteTier : MonoBehaviour
 {
     
-    public int Q_copper;
-    public int Q_iron;
-    public int Q_gold;
+    [SerializeField] private int Q_copper;
+    [SerializeField] private int Q_iron;
+    [SerializeField] private int Q_gold;
 
-    public GameObject quest;
-    public GameObject Q_tier1;
-    public GameObject Q_tier2;
-    public GameObject Q_tier3;
+    [SerializeField] private GameObject quest;
+    [SerializeField] private GameObject Q_tier1;
+    [SerializeField] private GameObject Q_tier2;
+    [SerializeField] private GameObject Q_tier3;
 
-    public GameObject check1;
-    public GameObject check2;
-    public GameObject check3;
+    [SerializeField] private GameObject check1;
+    [SerializeField] private GameObject check2;
+    [SerializeField] private GameObject check3;
 
-    public Button complete1;
-    public Button complete2;
-    public Button complete3;
+    [SerializeField] private Button complete1;
+    [SerializeField] private Button complete2;
+    [SerializeField] private Button complete3;
 
     public string sceneName;
 
