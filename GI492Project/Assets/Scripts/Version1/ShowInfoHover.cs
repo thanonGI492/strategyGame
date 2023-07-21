@@ -25,7 +25,7 @@ public class ShowInfoHover : MonoBehaviour
         uiHolder.SetActive(false);
     }
 
-    private void OnMouseOver()
+    private void OnMouseDown()
     {
         if (!BuildingSystem.Instance.Placed)
         {
@@ -51,7 +51,7 @@ public class ShowInfoHover : MonoBehaviour
                 infoText.text = "Current Golds: " + objectRefernce.OnGensgold.ToString();
                 break;
             case "Thermalplant":
-                infoText.text = "Woods Fuel: " + objectRefernce.Building.DrainResource + "/S" 
+                infoText.text = "Woods Fuel: " + objectRefernce.Building.DrainResource + "/" + objectRefernce.Building.DrainTime + "S" 
                     + "\n" + "Energy: " + objectRefernce.Building.DeductENG;
                 break;
             case (_):

@@ -14,4 +14,5 @@ public class CostBuilding : ScriptableObject
     public int ReturnENG;
     public int DeductENG;
     public int DrainResource;
+    public int DrainTime;
 }

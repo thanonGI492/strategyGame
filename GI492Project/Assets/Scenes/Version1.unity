@@ -7713,6 +7713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8334b2a7430f0549a81371038f952c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 519420028}
   gridLayout: {fileID: 313388003}
   mainTilemap: {fileID: 303486035}
   tempTilemap: {fileID: 1837720146}
@@ -13495,6 +13496,8 @@ MonoBehaviour:
   beginResource: 45
   resetResource: 0
   floatTextPrefab: {fileID: 7720259878374139147, guid: 9d00ad9e94ae65c45ae337f6cd7745b8, type: 3}
+  cam: {fileID: 519420028}
+  offSet: 2
   WaitingPlace: 0
 --- !u!4 &1794567758
 Transform:

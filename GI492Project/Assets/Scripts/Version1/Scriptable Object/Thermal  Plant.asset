@@ -21,3 +21,4 @@ MonoBehaviour:
   ReturnENG: 0
   DeductENG: 3
   DrainResource: 1
+  DrainTime: 2

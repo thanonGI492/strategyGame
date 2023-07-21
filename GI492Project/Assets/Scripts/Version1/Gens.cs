@@ -7,7 +7,6 @@ public class Gens : MonoBehaviour
 {
     public static Gens Instance;
 
-    [SerializeField] private float controlStatGens;
     [SerializeField] private int spawnTime;
     [SerializeField] private int energyDrain;
     [SerializeField] private int drainTime;
@@ -31,7 +30,7 @@ public class Gens : MonoBehaviour
     private bool _isOut;
     //public variable
     public CostBuilding Building;
-    public bool IsWork;
+    [HideInInspector] public bool IsWork;
 
     #region Unity Method
 
@@ -39,9 +38,8 @@ public class Gens : MonoBehaviour
     {
         _spriteRend = GetComponentInChildren<SpriteRenderer>();
         _isOut = false;
+        IsWork = true;
     }
-
-    
 
     private void OnMouseUp()
     {
@@ -106,8 +104,8 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             _spriteRend.color = defaultColor;
-            StatsResource.TotalWood += (int)(_baseLv * controlStatGens);
-             OnGenswood -= (int)(_baseLv * controlStatGens);
+            StatsResource.TotalWood += (int)(_baseLv * Building.DrainResource);
+             OnGenswood -= (int)(_baseLv * Building.DrainResource);
 
              if (OnGenswood == Breakpoint)
              {
@@ -130,8 +128,8 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             _spriteRend.color = defaultColor;
-            StatsResource.TotalStone += (int)(_baseLv * controlStatGens);
-            OnGensstone -= (int)(_baseLv * controlStatGens);
+            StatsResource.TotalStone += (int)(_baseLv * Building.DrainResource);
+            OnGensstone -= (int)(_baseLv * Building.DrainResource);
 
             if (OnGensstone == Breakpoint)
             {
@@ -152,8 +150,8 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             _spriteRend.color = defaultColor;
-            StatsResource.TotalCopper += (int)(_baseLv * controlStatGens);
-            OnGenscopper -= (int)(_baseLv * controlStatGens);
+            StatsResource.TotalCopper += (int)(_baseLv * Building.DrainResource);
+            OnGenscopper -= (int)(_baseLv * Building.DrainResource);
 
             if (OnGenscopper == Breakpoint)
             {
@@ -174,8 +172,8 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             _spriteRend.color = defaultColor;
-            StatsResource.TotalIron += (int)(_baseLv * controlStatGens);
-            OnGensiron -= (int)(_baseLv * controlStatGens);
+            StatsResource.TotalIron += (int)(_baseLv * Building.DrainResource);
+            OnGensiron -= (int)(_baseLv * Building.DrainResource);
 
             if (OnGensiron == Breakpoint)
             {
@@ -196,8 +194,8 @@ public class Gens : MonoBehaviour
         if (StatsResource.TotalEnergy > BlackOut)
         {
             _spriteRend.color = defaultColor;
-            StatsResource.TotalGold += (int)(_baseLv * controlStatGens);
-            OnGensgold -= (int)(_baseLv * controlStatGens);
+            StatsResource.TotalGold += (int)(_baseLv * Building.DrainResource);
+            OnGensgold -= (int)(_baseLv * Building.DrainResource);
 
             if (OnGensgold == Breakpoint)
             {
@@ -227,7 +225,7 @@ public class Gens : MonoBehaviour
             {
                 
                 _spriteRend.color = defaultColor;
-                StatsResource.TotalWood -= (int)(_baseLv * controlStatGens);
+                StatsResource.TotalWood -= (int)(_baseLv * Building.DrainResource);
                 if (StatsResource.TotalWood <= Breakpoint)
                 {
                     StatsResource.TotalWood = Breakpoint;

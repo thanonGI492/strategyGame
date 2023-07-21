@@ -37,7 +37,7 @@ public class CostBuildingHover : MonoBehaviour
             case "Thermalplant":
                  hoverText.text = "Woods: " + cost.CostWood.ToString() + "\n" 
                     + "Stones: " + cost.CostStone.ToString()+ "\n" + "Enegy: +" + cost.DeductENG + "\n" 
-                    + "Cost: Wood " + cost.DrainResource + "/S";
+                    + "Cost: Wood " + cost.DrainResource + "/" + cost.DrainTime + "S";
                 break;
 
             case (_):

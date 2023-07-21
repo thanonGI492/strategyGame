@@ -8,6 +8,7 @@ public class GridBuildingSystem : MonoBehaviour
     public static GridBuildingSystem Instance;
 
     [Header("References")]
+    [SerializeField] private GameObject cam;
     [SerializeField] private GridLayout gridLayout;
     [SerializeField] private Tilemap mainTilemap;
     [SerializeField] private Tilemap tempTilemap;
@@ -29,7 +30,19 @@ public class GridBuildingSystem : MonoBehaviour
         Instance = this;
     }
 
-    private void Start(){
+    private void Start() {
+        foreach (var t in tileBases.Keys)
+        {
+            if (t.Equals(TileType.Empty) || t.Equals(TileType.Dirt) || t.Equals(TileType.Dirt2) || 
+                t.Equals(TileType.Dirt3) || t.Equals(TileType.Dirt4) || t.Equals(TileType.Red) || 
+                t.Equals(TileType.Forest) || t.Equals(TileType.Forest2) || t.Equals(TileType.Water) ||
+                t.Equals(TileType.Copper) || t.Equals(TileType.Iron) || t.Equals(TileType.Gold) || 
+                t.Equals(TileType.Hill) || t.Equals(TileType.Hill2) || t.Equals(TileType.Stone) ||
+                t.Equals(TileType.Stone2) || t.Equals(TileType.Default))
+            {
+                return;
+            }
+        }
         string version = @"Version1\";
         string tilePath = @"Tiles\";
         
@@ -120,10 +133,8 @@ public class GridBuildingSystem : MonoBehaviour
         }
 
         IsSpawningObj = true;
-        temp = Instantiate(building, new Vector3(0f, 0.3f, 0f), Quaternion.identity).GetComponent<BuildingSystem>();
+        temp = Instantiate(building, new Vector3(cam.transform.position.x, cam.transform.position.y), Quaternion.identity).GetComponent<BuildingSystem>();
         FollowBuilding(temp.gameObject);
-        
-
     }
 
     public void ClearArea(){

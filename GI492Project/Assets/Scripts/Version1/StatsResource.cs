@@ -16,6 +16,8 @@ public class StatsResource : MonoBehaviour
     [SerializeField] private int beginResource;
     [SerializeField] private int resetResource;
     [SerializeField] private GameObject floatTextPrefab;
+    [SerializeField] private GameObject cam;
+    [SerializeField] private int offSet;
 
     //public variable
     [HideInInspector] public static int TotalEnergy;
@@ -26,7 +28,6 @@ public class StatsResource : MonoBehaviour
     [HideInInspector] public static int TotalGold;
     [HideInInspector] public bool WaitingPlace;
     public GameObject FloatTextPrefab => floatTextPrefab;
-
 
     #region Unity Method
     private void Awake()
@@ -83,7 +84,7 @@ public class StatsResource : MonoBehaviour
 
     public void FloatingText(string changeMessage, string message)
     {
-        GameObject floatText = Instantiate(floatTextPrefab,  transform.position, Quaternion.identity);
+        GameObject floatText = Instantiate(floatTextPrefab, new Vector3(cam.transform.position.x, cam.transform.position.y - offSet), Quaternion.identity, cam.transform);
         floatText.GetComponent<TextMesh>().text = changeMessage + message;
     }
 
