@@ -29,8 +29,8 @@ public class CompleteTier : MonoBehaviour
     void Start()
     {
         quest.SetActive(false);
-        Q_tier2.SetActive(false);
-        Q_tier3.SetActive(false);
+        //Q_tier2.SetActive(false);
+        //Q_tier3.SetActive(false);
     }
 
     public void Tier1()
