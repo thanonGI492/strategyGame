@@ -7,7 +7,7 @@ public class Gens : MonoBehaviour
 {
     public static Gens Instance;
 
-    [SerializeField] private int spawnTime;
+    [SerializeField] private float spawnTime;
     [SerializeField] private int energyDrain;
     [SerializeField] private int drainTime;
     [SerializeField] private int BlackOut;
