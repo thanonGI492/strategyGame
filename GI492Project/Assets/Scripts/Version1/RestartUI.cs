@@ -8,6 +8,7 @@ public class RestartUI : MonoBehaviour
 
     public void RestartBtn()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Version1");
     }
 
