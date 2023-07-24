@@ -38,7 +38,8 @@ public class GridBuildingSystem : MonoBehaviour
                 t.Equals(TileType.Forest) || t.Equals(TileType.Forest2) || t.Equals(TileType.Water) ||
                 t.Equals(TileType.Copper) || t.Equals(TileType.Iron) || t.Equals(TileType.Gold) ||
                 t.Equals(TileType.Hill) || t.Equals(TileType.Hill2) || t.Equals(TileType.Stone) ||
-                t.Equals(TileType.Stone2) || t.Equals(TileType.TreeDestroy) || t.Equals(TileType.StoneDestroy))
+                t.Equals(TileType.Stone2) || t.Equals(TileType.TreeDestroy) || t.Equals(TileType.StoneDestroy) ||
+                t.Equals(TileType.Default))
             {
                 return;
             }
@@ -67,6 +68,7 @@ public class GridBuildingSystem : MonoBehaviour
         tileBases.Add(TileType.CopperDestroy, Resources.Load<TileBase>(version + tilePath + "copperDestroy"));
         tileBases.Add(TileType.IronDestroy, Resources.Load<TileBase>(version + tilePath + "ironDestroy"));
         tileBases.Add(TileType.GoldDestroy, Resources.Load<TileBase>(version + tilePath + "goldDestroy"));
+        tileBases.Add(TileType.Default, Resources.Load<TileBase>(version + tilePath + "default"));
     }
 
     private void Update(){
@@ -168,7 +170,7 @@ public class GridBuildingSystem : MonoBehaviour
                 baseArray[i] == tileBases[TileType.Stone2] && gameObject.CompareTag("OnStone") || baseArray[i] == tileBases[TileType.Hill2] && gameObject.CompareTag("OnHill"))
             {
                 IsAlreadyOccupied = false;
-                tileArray[i] = tileBases[TileType.TreeDestroy];
+                tileArray[i] = tileBases[TileType.Default];
             }
             else
             {
@@ -261,5 +263,6 @@ public enum TileType{
     StoneDestroy,
     CopperDestroy,
     IronDestroy,
-    GoldDestroy
+    GoldDestroy,
+    Default
 }

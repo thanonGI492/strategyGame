@@ -24,13 +24,33 @@ public class CompleteTier : MonoBehaviour
     [SerializeField] private Button complete2;
     [SerializeField] private Button complete3;
 
+    [SerializeField] private GameObject backgroundQuest2;
+    [SerializeField] private GameObject backgroundQuest3;
+
     public string sceneName;
+
+    //private variable
+    private bool _isCompleteQuest1;
+    private bool _isCompleteQuest2;
+    private bool _isCompleteQuest3;
 
     void Start()
     {
         quest.SetActive(false);
+        _isCompleteQuest1 = false;
+        _isCompleteQuest2 = false;
+        _isCompleteQuest3 = false;
         //Q_tier2.SetActive(false);
         //Q_tier3.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (!_isCompleteQuest1 || !_isCompleteQuest2 || !_isCompleteQuest3)
+        {
+            return;
+        }
+        SceneManager.LoadScene(sceneName);
     }
 
     public void Tier1()
@@ -43,7 +63,8 @@ public class CompleteTier : MonoBehaviour
         StatsResource.TotalCopper -= Q_copper;
         check1.SetActive(true);
         complete1.enabled = false;
-        Q_tier2.SetActive(true);
+        backgroundQuest2.SetActive(false);
+        _isCompleteQuest1 = true;
     }
 
     public void Tier2()
@@ -56,7 +77,8 @@ public class CompleteTier : MonoBehaviour
         StatsResource.TotalIron -= Q_iron;  
         check2.SetActive(true);
         complete2.enabled = false;
-        Q_tier3.SetActive(true);
+        backgroundQuest3.SetActive(false);
+        _isCompleteQuest2 = true;
     }
 
     public void Tier3()
@@ -69,8 +91,8 @@ public class CompleteTier : MonoBehaviour
         }
         StatsResource.TotalGold -= Q_gold;
         check3.SetActive(true);
-        SceneManager.LoadScene(sceneName);
+        
         complete3.enabled = false;
-
+        _isCompleteQuest3 = true;
     }
 }
