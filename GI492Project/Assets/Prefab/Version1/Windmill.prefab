@@ -217,7 +217,7 @@ MonoBehaviour:
   OnGensstone: 50
   OnGenscopper: 60
   OnGensiron: 70
-  OnGensgold: 34
+  OnGensgold: 36
   Breakpoint: 0
   Building: {fileID: 11400000, guid: f6b538e300bff14418bfe521026034b3, type: 2}
   IsWork: 1
