@@ -25,14 +25,8 @@ public class ShowInfoHover : MonoBehaviour
         uiHolder.SetActive(false);
     }
 
-    private void OnMouseDown()
+    private void Update()
     {
-        if (!BuildingSystem.Instance.Placed)
-        {
-            return;
-        }
-        uiHolder.SetActive(true);
-        
         switch (objectRefernce.Building.NameBuilding)
         {
             case "Sawmill":
@@ -51,13 +45,22 @@ public class ShowInfoHover : MonoBehaviour
                 infoText.text = "Current Golds: " + objectRefernce.OnGensgold.ToString();
                 break;
             case "Thermalplant":
-                infoText.text = "Woods Fuel: " + objectRefernce.Building.DrainResource + "/" + objectRefernce.Building.DrainTime + "S" 
+                infoText.text = "Woods Fuel: " + objectRefernce.Building.DrainResource + "/" + objectRefernce.Building.DrainTime + "S"
                     + "\n" + "Energy: " + objectRefernce.Building.DeductENG;
                 break;
             case (_):
                 infoText.text = "Energy: " + objectRefernce.Building.DeductENG;
                 break;
         }
+    }
+
+    private void OnMouseDown()
+    {
+        if (!BuildingSystem.Instance.Placed)
+        {
+            return;
+        }
+        uiHolder.SetActive(true);
     }
 
     private void OnMouseExit()
