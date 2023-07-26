@@ -47,12 +47,12 @@ public class StatsResource : MonoBehaviour
 
     private void Update()
     {
-        energyText.text = "Energy: " + TotalEnergy.ToString();
-        woodText.text = "Wood: " + TotalWood.ToString();
-        stoneText.text = "Stone: " + TotalStone.ToString();
-        copperText.text = "Copper: " + TotalCopper.ToString();
-        ironText.text = "Iron: " + TotalIron.ToString();
-        goldText.text = "Gold: " + TotalGold.ToString();
+        energyText.text = " " + TotalEnergy.ToString();
+        woodText.text = " " + TotalWood.ToString();
+        stoneText.text = " " + TotalStone.ToString();
+        copperText.text = " " + TotalCopper.ToString();
+        ironText.text = " " + TotalIron.ToString();
+        goldText.text = " " + TotalGold.ToString();
     }
 
     #endregion
