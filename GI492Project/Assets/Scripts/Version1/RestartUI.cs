@@ -4,8 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RestartUI : MonoBehaviour
-{ 
+{
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Stage game");
+    }
+    
+    
     public void RestartBtn()
     {
         Time.timeScale = 1;
